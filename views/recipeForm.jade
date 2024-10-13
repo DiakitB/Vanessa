@@ -1,0 +1,56 @@
+
+extends layout
+
+
+block content 
+
+ form(action="/kitchen/create", method="POST")
+   div(class="form-group")
+     label(for="title") Title
+     input(type="text", name="title", class="form-control", id="title")
+   div(class="form-group")
+     label(for="image") Image
+     input(type="file", name="image", class="form-control", id="image")
+   div(class="form-group")
+     label(for="category") Category
+     input(type="text", name="category", class="form-control", id="category")
+   div(class="form-group")
+     label(for="instructions") Instructions
+      textarea(name="instructions", class="form-control", id="instructions")
+   div(class="box")
+     div.form-group
+      label(for='ingredient') Ingredient:
+      select#ingredient.form-control(name='ingredient' required multiple)
+        option(value='') --Please select an ingredient--
+        for ingredient in ingredients
+            if ingredient.selected
+              option(value=ingredient.name selected) #{ingredient.name}
+            else
+              option(value=ingredient.name) #{ingredient.name}
+         
+     div.form-group
+      label(for='unit') unit:
+      select#unit.form-control(name='unit' required multiple)
+        option(value='') --Please select an unit--
+        for unit in units
+            if unit.selected
+              option(value=unit.name selected) #{unit.name}
+            else
+              option(value=unit.name) #{unit.name}
+    div(class="form-group") 
+      label(for="servings") Servings
+      input(type="number", name="servings", class="form-control", id="servings")
+
+   button.btn.btn-primary(type='submit') Submit
+  
+
+ 
+
+
+
+
+ 
+
+
+
+ 

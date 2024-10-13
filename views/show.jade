@@ -1,0 +1,13 @@
+
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} page
+
+  div
+    h2= recipe.title
+    p= recipe.image
+    p= recipe.category
+    a(href=recipe.url) View Recipe
+   
