@@ -25,7 +25,7 @@ exports.createUnit_post = asyncHandler(async (req, res) => {
     name: req.body.name,
   });
   await unit.save();
-  res.redirect("/");
+  res.redirect("/kitchen/createUnit");
 });
 
 exports.updateUnit_get = asyncHandler(async (req, res) => {

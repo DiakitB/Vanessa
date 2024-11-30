@@ -1,56 +1,120 @@
 
 extends layout
 
-
 block content 
+  h1 Add a New Recipe
+  form(method='post' enctype='multipart/form-data')
+    div.form-group
+      label(for='title') Recipe Title:
+      input(type='text' name='title' id='title' required)
+    div.form-group
+      label(for='image') Recipe Image URL:
+      input(type='file' name='image' id='image' required)
+    div.form-group
+      label Instructions:
+      div#instruction
+        div.instruction
+          input(type='text' name='instructions[]' placeholder='Instruction' required)
+    button(type='button' id='add-instruction') Add Instruction
 
- form(action="/kitchen/create", method="POST" enctype="multipart/form-data")
-   div(class="form-group")
-     label(for="title") Title
-     input(type="text", name="title", class="form-control", id="title")
-   div(class="form-group")
-     label(for="image") Image
-     input(type="file", accept='image' name="image", class="form-control", id="image")
-   div(class="form-group")
-     label(for="category") Category
-     input(type="text", name="category", class="form-control", id="category")
-   div(class="form-group")
-     label(for="instructions") Instructions
-      textarea(name="instructions", class="form-control", id="instructions")
-   div(class="box")
-     div.form-group
-      label(for='ingredients') Ingredients :
-      select#ingredient.form-control(name='ingredients' required multiple)
-        option(value='') --Please select an ingredient--
-        for ingredient in ingredients
-            if ingredient.selected
-              option(value=ingredient.name selected) #{ingredient.name}
-            else
-              option(value=ingredient.name) #{ingredient.name}
-         
-     div.form-group
-      label(for='unit') unit:
-      select#unit.form-control(name='unit' required multiple)
-        option(value='') --Please select an unit--
-        for unit in units
-            if unit.selected
-              option(value=unit.name selected) #{unit.name}
-            else
-              option(value=unit.name) #{unit.name}
-    div(class="form-group") 
-      label(for="servings") Servings
-      input(type="number", name="servings", class="form-control", id="servings")
+    div.form-group
+      label(for='servings') Recipe Serving:
+      input(type='number' name='servings' id='servings' required)
+    div.form-group
+      label Ingredients:
+      div#ingredients
+        div.ingredient
+          input(type='text' name='ingredients[]' placeholder='Ingredient' required)
+          input(type='text' name='units[]' placeholder='Unit' required)
+    button(type='button' id='add-ingredient') Add Ingredient
 
-   button.btn.btn-primary(type='submit') Submit
+      div.sub-btn
+        button(type='submit') Submit
+    
+    script.
+      document.getElementById("add-instruction").addEventListener("click", function() {
+        var instructionsDiv = document.getElementById("instruction");
+        var newInstructionDiv = document.createElement("div");
+        newInstructionDiv.classList.add("instruction");
+        newInstructionDiv.innerHTML = `
+          <input type="text" name="instructions[]" placeholder="Instruction" required>
+        `;
+        instructionsDiv.appendChild(newInstructionDiv);
+      });
+      document.getElementById('add-ingredient').addEventListener('click', function() {
+        var ingredientsDiv = document.getElementById('ingredients');
+        var newIngredientDiv = document.createElement('div');
+        newIngredientDiv.classList.add('ingredient');
+        newIngredientDiv.innerHTML = `
+          <input type="text" name="ingredients[]" placeholder="Ingredient" required>
+          <input type="text" name="units[]" placeholder="Unit" required>
+        `;
+        ingredientsDiv.appendChild(newIngredientDiv);
+      });
+    .goback-btne
+      a(href='/kitchen/recipes') Go Back
+  style. 
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
   
+    .form-group {
+      margin-bottom: 15px;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  
+    input[type="text"],
+    input[type="number"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    button[type="button"],
+    button[type="submit"] {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+  
+    button[type="button"]:hover,
+    button[type="submit"]:hover {
+      background-color: #218838;
+    }
+  
+    
+  
+    .instruction,
+    .ingredient {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .instruction input,
+    .ingredient input {
+      flex: 1;
+    }
+    .sub-btn {
+      background-color:red;
+    
 
- 
-
-
-
-
- 
-
-
-
- 
+    }

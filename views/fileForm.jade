@@ -1,0 +1,39 @@
+
+extends layout
+
+block content 
+    div#registration-form(method='POST')
+        .fieldset
+            legend Create a new file
+            form(method="post")
+                .row
+                    label(for='title') File Name
+                    input(type="text" placeholder="File name" name='title' id='title' data-required="true" data-error-message="File Name is required")
+                .row
+                    label(for="totalAmount") Total to be pay
+                    input(type="text" placeholder="Total amount to be pa" name='totalAmount' data-required="true" data-type="totalAmount" data-error-message="Your E-mail is required")
+                input(type="submit" value="Create File")
+
+
+
+p 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

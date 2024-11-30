@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h1 Add a New Recipe
+
+  form( method="post" enctype="multipart/form-data")
+    div
+      label(for="title") Recipe Title
+      input(type="text" name="title" id="title" required)
+    div
+      label(for="image") Recipe Image 
+      input(type="file" name="image" id="image" required)
+    div
+      label(for="instructions") Recipe Instructions
+      textarea(name="instructions" id="instructions" required)
+    div
+      label(for="serving") Recipe Serving
+      input(type="number" name="serving" id="serving" required)
+    div
+      label Ingredients
+      div#ingredients
+        div.ingredient
+          input(type="text" name="ingredients[]" placeholder="Ingredient" required)
+          input(type="text" name="units[]" placeholder="Unit" required)
+    button(type="button" id="add-ingredient") Add Ingredient
+    div
+      button(type="submit") Submit
+
+  script.
+    document.getElementById('add-ingredient').addEventListener('click', function() {
+      var ingredientsDiv = document.getElementById('ingredients');
+      var newIngredientDiv = document.createElement('div');
+      newIngredientDiv.className = 'ingredient';
+      newIngredientDiv.innerHTML = '<input type="text" name="ingredients[]" placeholder="Ingredient" required> <input type="text" name="units[]" placeholder="Unit" required>';
+      ingredientsDiv.appendChild(newIngredientDiv);
+    });
+

@@ -3,11 +3,12 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-
+const testing = require("./scripts/compute");
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
-const multer = require('multer');
-const upload = multer({dest: 'uploads/'});
+const fileRouter = require("./routes/family");
+const travelRouter = require("./routes/travel"); // Import the travel router
+const bookmaksRouter = require("./routes/bookmark");
+
 // Compare this snippet from routes/kitchen.js:
 const kitchenRouter = require("./routes/kitchen"); // Import the kitchen router
 
@@ -23,10 +24,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/scripts', express.static(__dirname + '/scripts/'));
+
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/file", fileRouter);
 app.use("/kitchen", kitchenRouter); // Use the kitchen router for requests to the /kitchen path
+app.use("/travel", travelRouter); // Use the travel router for requests to the /travel path
+app.use("/recipes", bookmaksRouter);
+app.locals.testing = testing.testing;
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

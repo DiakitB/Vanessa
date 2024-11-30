@@ -1,0 +1,36 @@
+  
+ extends layout 
+
+
+block content
+ 
+// create a beautiful flower made out of red and white roses
+div.flower
+    div.rose.red
+        | 🌹
+    div.rose.white
+        | 🌹
+    div.rose.red
+        | 🌹
+    div.rose.white
+        | 🌹
+    div.rose.red
+        | 🌹
+        <style>
+            .flower {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .rose {
+                font-size: 2em;
+                margin: 5px;
+            }
+            .rose.red {
+                color: red;
+            }
+            .rose.white {
+                color: white;
+            }
+        </style>

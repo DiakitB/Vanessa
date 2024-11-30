@@ -1,0 +1,30 @@
+root {
+    --white: #fff;
+    --wild-sand: #f4f4f4;
+    --blue: #e1eff3;
+    --blue-grey-light: #717d83;
+    --blue-grey-medium: #797e81;
+    --blue-grey-dark: #353839;
+    --black: #0d0d0d;
+    --error: #ff8686;
+    --gold: #dfb941;
+    --ease-basic: cubic-bezier(0.5,0,0,1);
+    --ease-out: cubic-bezier(0.25,1,0.5,1);
+    --grid-width: 100vw;
+    --grid-height: 100svh;
+    --grid-column-count: 12;
+    --grid-gutter: 1.5rem;
+    --grid-padding: 2.1rem;
+    --grid-1col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 1 - var(--grid-gutter));
+    --grid-2col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 2 - var(--grid-gutter));
+    --grid-3col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 3 - var(--grid-gutter));
+    --grid-4col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 4 - var(--grid-gutter));
+    --grid-5col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 5 - var(--grid-gutter));
+    --grid-6col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 6 - var(--grid-gutter));
+    --grid-7col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 7 - var(--grid-gutter));
+    --grid-8col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 8 - var(--grid-gutter));
+    --grid-9col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 9 - var(--grid-gutter));
+    --grid-10col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 10 - var(--grid-gutter));
+    --grid-11col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 11 - var(--grid-gutter));
+    --grid-12col: calc((var(--grid-width) + var(--grid-gutter) - var(--grid-padding)* 2) / var(--grid-column-count)* 12 - var(--grid-gutter));
+}

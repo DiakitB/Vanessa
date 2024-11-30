@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .recipe-page
+    button.recipePage-btn 
+      a.recipePage-btn__link(href='/kitchen/recipes') Recipe Finder
+    .cardContainer
+      each recipe in recipes
+       .cardContainer__body
+        .cardImage_box 
+          img.cardImage(src=`/data/uploads/${recipe.image}` alt="")
+        .cardContent_box
+          p.cardContent_box__title= recipe.title
+        .cardBtn 
+          a.cardBtn__link(href=`/recipes/bookmarks/${recipe._id}`) View Recipe
+          a.cardBtn__link3(href=`/recipes/deleted/${recipe._id}`) Delete Recipe
+         
+
+         
+          
+
+          

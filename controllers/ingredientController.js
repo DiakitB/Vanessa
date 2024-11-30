@@ -23,7 +23,7 @@ exports.createIngredient_get = asyncHandler(async (req, res) => {
 exports.createIngredient_post = asyncHandler(async (req, res) => {
   console.log(req.body);
   await Ingredient.create(req.body);
-  res.redirect("/");
+  res.redirect("/kitchen/createIngredient");
 });
 
 exports.updateIngredient_get = asyncHandler(async (req, res) => {

@@ -1,13 +1,1300 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@font-face {
+  font-family: "roboto";
+  src: url("../fonts/Roboto-Regular.ttf");
+  ;
 }
 
-a {
-  color: #00b7ff;
+:root {
+  --dark-pink: #ba4270;
+ --water-white: #fbfcfe;
+
+  --blue-color: #36536b;
+  --dark-Blue: #1b262f;
+  --light-Pink: #da6d97;
+  --light-Gray: #6c8294;
+  --light-Blue: #e1eff3;
+  --light-Blue-2:  #004658;
+  --background-page: #22ddce;
+  --pink: #ee5867;
+  --pink-light: #fff0f0;
+  --pink-dark: #ec3a50;
+  --headlinesFont: 'Josefin Sans', sans-serif;
+  --bodyFont: 'Work Sans', sans-serif;
+  --wildWatermelon: #ff4f87;
+  --fuelYellow: #f0a035;
+  --textColor: #323232;
+  --bodyBg: #d6d6d6;
+  --white: #fff;
+  --black: #000;
+  --bgc-bullet: #F2994A;
+  --font-main: 'Montserrat', sans-serif;
+  --font-head: 'IBM Plex Serif', serif;
+  --bgc-checkbox: #760c1c;
+  --cornsilk: cornsilk;
+  --clr-primary: #d50000;
+  --clr-primary-hover: #29e6a7;
+  --clr-primary-dark: #039d69;
+  --clr-gray100: #f0f7f8;
+  --clr-gray200: #cfd8dc;
+  --clr-gray300: #a7b7be;
+  --clr-gray400: #6b7e86;
+  --clr-gray500: #425a65;
+  --clr-primary: #d50000;
+  --clr-primary-hover: #29e6a7;
+  --clr-primary-dark: #039d69;
+  --clr-gray100: #f0f7f8;
+  --clr-gray200: #cfd8dc;
+  --clr-gray300: #a7b7be;
+  --clr-gray400: #6b7e86;
+  --clr-gray500: #425a65;
+
+  /*   border radius */
+  --radius: 0.2rem;
+
+  /*   border radius */
+  --radius: 0.2rem;
+
 }
 
-.box {
+
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =====================Utility Classes===================== */
+.btn{
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+
+.container{
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+ 
+  
+
+}
+.logo{
+  height: 200px;
+  width: 200px;
+}
+
+.lead{
+  font-size: 1.5rem;
+  color: var(--water-white);
+  line-height: 1rem;
+}
+
+body{
+  font-family: 'roboto', sans-serif;
+  background-color:var(--light-Blue-2);
+    
+}
+
+
+
+
+
+
+
+.folder{
+	-webkit-perspective: 500px;
+	perspective: 500px;
+	width: 340px;
+	height: 100px;
+	background: #ffd480;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	border-top-right-radius: 5px;
+	cursor: pointer;
+	-webkit-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+/* this is for the folder's tab */
+.folder::before{
+	width: 80px;
+	height: 20px;
+	content: '';
+	background: #ffd480;
+	position: absolute;
+	top: -20px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+/* this is for the folder's front flap */
+.folder::after{
+	width: 340px;
+	height: 210px;
+	position: absolute;
+	content: '';
+	background: #ffcb66;
+	top: 40px;
+	box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.3);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	/* the transform property rotates the front flap of the folder a bit t0 make it look 3D */
+	-webkit-transform: rotateX(-10deg);
+	transform: rotateX(-10deg);
+	-webkit-transition: all 400ms ease;
+	transition: all 400ms ease;
+}
+/* this is for the piece of paper inside the folder */
+.folder-inside{
+	width: 320px;
+	height: 200px;
+	position: absolute;
+	background: #fff;
+	top: 20px;
+	left: 10px;
+	box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+	-webkit-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+	border: 1px solid #ddd;
+	-webkit-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+/* this is for the lines on the paper */
+.folder-inside::before{
+	content: '';
+	/* we're going to use linear gradients to create the lines */
+	background: -webkit-repeating-linear-gradient(145deg, #ffffff, #ffffff 10px, #333333 7px, #333333 20px);
+	background: repeating-linear-gradient(0deg, #ffffff, #ffffff 10px, #333333 10px, #333333 20px);
+	position: absolute;
+	top: -37px;
+	left: 65px;
+	width: 200px;
+	height: 290px;
+	color: #343434;
+	font-size: 60px;
+	line-height: 30px;
+	-webkit-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	opacity: 0.15;
+}
+/* finally let's get this folder to rotate when we hover on it */
+.folder:hover{
+	-webkit-transform: translate(-50%, -52%);
+	transform: translate(-50%, -52%);
+}
+.folder:hover::after{
+	-webkit-transform: rotateX(-15deg);
+	transform: rotateX(-15deg);
+}
+.folder:hover .folder-inside{
+	-webkit-transform: rotate(-7deg) translateY(-15%);
+	transform: rotate(-7deg) translateY(-15%);
+}
+/* hover over the folder to see the effect in action */
+
+
+.folder-btn{
+  width: 100px;
+  height: 40px;
+  background: var(--dark-pink);
+  position: absolute;
+  top: 59%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  color: #0c0b0b;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+/* this is for the subfolders's tab */
+
+h1{
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+}
+.container-subfolder {
+    
+    flex-direction: row;
+    width: 18rem;
+    height: 14rem;
+    margin: 40px auto ;
+    position: relative;
+    
+}
+
+.subfile-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  
+    gap: 1rem;
+   
+   
+}
+/* .goback{
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.one {
+  
+    float: right;
+    background-color: black;
+    border-bottom: 12px solid #00c89e;
+    border-left: 12px solid transparent;
+    border-top-right-radius: 8px;
+}
+
+.two {
+    width: 100%;
+    height: 14rem;
+    margin-top: 12px;
+    position: absolute;
+    background-color: #00c89e;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+
+} */
+
+/* .afile{
+  display: flex;
+  justify-content: space-around
+
+  
+} */
+
+
+/* this is for the index page  */
+
+
+.button{
+    --top : rgba(100,100,100,.8) ;
+    --bottom : rgba(100,100,100,.2) ;
+    --side : rgba(100,100,100,.5) ;
+
+    --1_top : rgba(216,0,60,.8) ;
+    --1_bottom : rgba(216,0,60,.2) ;
+    --1_side : rgba(216,0,60,.5) ;
+
+    --2_top : rgba(0,100,190,.8) ;
+    --2_bottom : rgba(0,100,190,.2) ;
+    --2_side : rgba(0,100,190,.5) ;
+
+    --3_top : rgba(0,170,100,.8) ;
+    --3_bottom : rgba(0,170,100,.2) ;
+    --3_side : rgba(0,170,100,.5) ;
+
+    --4_top : rgba(255,230,20,.8) ;
+    --4_bottom : rgba(255,230,20,.2) ;
+    --4_side : rgba(255,230,20,.5) ;
+
+    --5_top : rgba(155,50,255,.8) ;
+    --5_bottom : rgba(155,50,255,.2) ;
+    --5_side : rgba(155,50,255,.5) ;
+}
+
+.button{
+    display : flex ;
+    position : relative ;
+    width : 280px ;
+    height : 80px ;
+    text-decoration : none ;
+    perspective : 600px ;
+    background : linear-gradient( rgba(255,255,255,.1) 0% , rgba(255,255,255,0) 30%  ,rgba(255,255,255,0) 70% , rgba(255,255,255,.1)) ;
+    box-shadow : 0 0 32px rgba(0,0,0,1) ;
+    cursor: pointer;
+}
+.button::before,
+.button::after{
+    content : '' ;
+    position : absolute ;
+    top : 0 ;
+    left : 0 ;
+    right : 0 ;
+    margin : 0 auto ;
+    width : 100% ;
+    height : 100% ;    
+}
+.button::before{
+    top : 0 ;
+    transform-origin : top center ;
+    transform : rotateX(70deg) ;
+    background : linear-gradient(135deg , rgba(255,255,255,.3) 10%, rgba(255,255,255,0) 60%);
+}
+.button::after{
+    bottom : 0 ;
+    transform-origin : bottom center ;
+    transform : rotateX(-110deg) ;
+    background : radial-gradient( rgba(255,255,255,0) 40%, rgba(255,255,255,.1) ) ;
+}
+.button__wrapper{
+    position : relative ;
+    z-index : 2 ;
+    width : 100% ;
+    height : 100% ;
+    background : linear-gradient( rgba(255,255,255,.4) 0% , rgba(255,255,255,0) 30%  ,rgba(255,255,255,0) 70% , rgba(255,255,255,.2)) ;
+    transform : translate3d( 0 , 27px , 74px) ;
+    perspective : 600px ;
+    border-radius :100%;
+}
+.button__text{
+    position : relative ;
+    display : flex ;
+    justify-content : center ;
+    align-items : center ;
+    width : 100% ;
+    height : 100% ;
+    font-family: 'Alfa Slab One', cursive;
+    font-size : 32px ;
+    letter-spacing : 4px ;
+    color : rgba(255,255,255,.2) ;
+    transition : all ease-in-out 1s ;
+}
+.button__text::before{
+    content : '' ;
+    position : absolute ;
+    z-index : 1 ;
+    top : 0 ;
+    left : 0 ;
+    width : 230px ;
+    height : 80px ;
+    background : linear-gradient(25deg , rgba(255,255,255,.1) , rgba(255,255,255,0)) ;
+    clip-path : path('M230,0H0V80H146.96c0-35.33,33.95-65.83,83.04-80Z') ;
+}
+.button__text::after{
+    content : '' ;
+    position : absolute ;
+    z-index : 2 ;
+    top : 4px ;
+    left : 4px ;
+    width : 272px ;
+    height : 40px ;
+    background : linear-gradient(25deg , rgba(255,255,255,.3) , rgba(255,255,255,0)) ;
+    clip-path : path('M272,9.22V0H0V40H.32C48.19,22.59,151.14,10.26,272,9.22Z') ;
+}
+.button__wrapper::before,
+.button__wrapper::after{
+    content : '' ;
+    position : absolute ;
+    top : 0 ;
+    width : 84px ;
+    height : 100% ;
+    background : linear-gradient(90deg , rgba(255,255,255,.2) 0% , rgba(255,255,255,0) 30%  ,rgba(255,255,255,0) 70% , rgba(255,255,255,.2)) ;
+    background : radial-gradient( rgba(255,255,255,0) 40%, rgba(255,255,255,.1) ) ;
+}
+.button__wrapper::before{
+    left : 0 ;
+    transform-origin : left center ;
+    transform : rotateY(90deg) skewY(-20deg);
+}
+.button__wrapper::after{
+    right : 0 ;
+    transform-origin : right center ;
+    transform : rotateY(-90deg) skewY(20deg);
+}
+
+.button__box{
+    position : absolute ;
+    top : 0 ;
+    left : 8px ;
+    bottom : 0 ;
+    margin : auto 0 ;
+    width : 264px ;
+    height : 70px ;
+    transform : translate3d(0, 4px, 10px) ;
+    perspective : 600px ;
+}
+.inner{
+    transition : all ease-in-out 1s ;
+}
+.inner__back{
+    position : absolute ;
+    top : 0 ;
+    left : 0 ;
+    width : 0 ;
+    height : 100% ;
+    background : var(--bottom);
+    perspective : 600px ;
+}
+.inner__top{
+    position : absolute ;
+    z-index : 3 ;
+    top : 0 ;
+    left : 0 ;
+    width : 0 ;
+    height : 100% ;
+    transform-origin : top left ; 
+    transform : rotateX(70deg) ;
+    background : var(--top);
+}
+.inner__front{
+    position : absolute ;
+    z-index : 3 ;
+    top : 0 ;
+    left : 0 ;
+    width : 0 ;
+    height : 100% ;
+    transform-origin : top left ; 
+    transform : translate3d(0, 24px, 68px ) ;
+    background : var(--top);
+}
+.inner__bottom{
+    position : absolute ;
+    z-index : 2 ;
+    top : 0 ;
+    left : 0 ;
+    width : 0 ;
+    height : 100% ;
+    transform-origin : bottom left ; 
+    transform : rotateX(-110deg) ;
+    background : var(--bottom);
+}
+.inner__left{
+    position : absolute ;
+    z-index : 2 ;
+    top : 0 ;
+    left : 0 ;
+    width : 68px ;
+    height : 100% ;
+    transform-origin : center left ; 
+    transform : rotateY(-90deg) skewY(20deg) ;
+    background : rgba(255,0,0,0) ;
+    transition : all linear .01s ;
+}
+.inner__right{
+    position : absolute ;
+    z-index : 2 ;
+    top : 0 ;
+    left : 0 ;
+    width : 68px ;
+    height : 100% ;
+    transform-origin : center left ; 
+    transform : rotateY(-90deg) skewY(20deg) ;
+    background : rgba(255,0,0,0) ;
+}
+.button:hover .inner__top,
+.button:hover .inner__front,
+.button:hover .inner__bottom,
+.button:hover .inner__back{
+    width : 100% ;
+}
+.button:hover .inner__left{
+    background :  var(--side) ;
+}
+.button:hover .inner__right{
+    left : 100% ;
+    background :  var(--side) ;
+}
+.button:hover .button__text{
+    color : rgba(255,255,255,1) ;
+}
+.plate{
+    position : absolute ;
+    z-index : 10 ;
+    top : 0 ;
+    left : -20px ;
+    width : 320px ;
+    height : 120px ;
+    animation-duration : 3s ;
+    animation-iteration-count : infinite ;
+}
+.plate:nth-child(1){
+    animation-name : plate_1 ;
+}
+.plate:nth-child(2){
+    animation-name : plate_2 ;
+}
+.plate:nth-child(3){
+    animation-name : plate_3 ;
+}
+.plate:nth-child(4){
+    animation-name : plate_4 ;
+}
+.plate:nth-child(5){
+    animation-name : plate_5 ;
+}
+.button:hover .plate{
+    animation-play-state : paused ;
+}
+.plate:nth-child(1):hover ~ .button__box .inner__top,
+.plate:nth-child(1):hover ~ .button__box .inner__front{
+    background : var(--1_top);
+} 
+.plate:nth-child(1):hover ~ .button__box .inner__left,
+.plate:nth-child(1):hover ~ .button__box .inner__right{
+    background : var(--1_side);
+} 
+.plate:nth-child(1):hover ~ .button__box .inner__back,
+.plate:nth-child(1):hover ~ .button__box .inner__bottom{
+    background : var(--1_bottom);
+} 
+.plate:nth-child(2):hover ~ .button__box .inner__top,
+.plate:nth-child(2):hover ~ .button__box .inner__front{
+    background : var(--2_top);
+} 
+.plate:nth-child(2):hover ~ .button__box .inner__left,
+.plate:nth-child(2):hover ~ .button__box .inner__right{
+    background : var(--2_side);
+} 
+.plate:nth-child(2):hover ~ .button__box .inner__back,
+.plate:nth-child(2):hover ~ .button__box .inner__bottom{
+    background : var(--2_bottom);
+} 
+.plate:nth-child(3):hover ~ .button__box .inner__top,
+.plate:nth-child(3):hover ~ .button__box .inner__front{
+    background : var(--3_top);
+} 
+.plate:nth-child(3):hover ~ .button__box .inner__left,
+.plate:nth-child(3):hover ~ .button__box .inner__right{
+    background : var(--3_side);
+} 
+.plate:nth-child(3):hover ~ .button__box .inner__back,
+.plate:nth-child(3):hover ~ .button__box .inner__bottom{
+    background : var(--3_bottom);
+} 
+.plate:nth-child(4):hover ~ .button__box .inner__top,
+.plate:nth-child(4):hover ~ .button__box .inner__front{
+    background : var(--4_top);
+} 
+.plate:nth-child(4):hover ~ .button__box .inner__left,
+.plate:nth-child(4):hover ~ .button__box .inner__right{
+    background : var(--4_side);
+} 
+.plate:nth-child(4):hover ~ .button__box .inner__back,
+.plate:nth-child(4):hover ~ .button__box .inner__bottom{
+    background : var(--4_bottom);
+} 
+.plate:nth-child(5):hover ~ .button__box .inner__top,
+.plate:nth-child(5):hover ~ .button__box .inner__front{
+    background : var(--5_top);
+} 
+.plate:nth-child(5):hover ~ .button__box .inner__left,
+.plate:nth-child(5):hover ~ .button__box .inner__right{
+    background : var(--5_side);
+} 
+.plate:nth-child(5):hover ~ .button__box .inner__back,
+.plate:nth-child(5):hover ~ .button__box .inner__bottom{
+    background : var(--5_bottom);
+} 
+@keyframes plate_1{
+    0%   { transform : scale(1) ; }
+    19.9%{ transform : scale(1) ; }
+    20%  { transform : scale(0) ; }
+    100% { transform : scale(0) ; }
+}
+@keyframes plate_2{
+    0%   { transform : scale(0) ; }
+    19.9%{ transform : scale(0) ; }
+    20%  { transform : scale(1) ; }
+    39.9%{ transform : scale(1) ; }
+    40%  { transform : scale(0) ; }
+    100% { transform : scale(0) ; }
+}
+@keyframes plate_3{
+    0%   { transform : scale(0) ; }
+    39.9%{ transform : scale(0) ; }
+    40%  { transform : scale(1) ; }
+    59.9%{ transform : scale(1) ; }
+    60%  { transform : scale(0) ; }
+    100% { transform : scale(0) ; }
+}
+@keyframes plate_4{
+    0%   { transform : scale(0) ; }
+    59.9%{ transform : scale(0) ; }
+    60%  { transform : scale(1) ; }
+    79.9%{ transform : scale(1) ; }
+    80%  { transform : scale(0) ; }
+    100% { transform : scale(0) ; }
+}
+@keyframes plate_5{
+    0%   { transform : scale(0) ; }
+    79.9%{ transform : scale(0) ; }
+    80%  { transform : scale(1) ; }
+    100% { transform : scale(1) ; }
+}
+
+
+
+
+/* 本体に関係ないスタイル */
+.container-idex{
+    width : 100% ;
+    height : 200px ;
+    display : flex ;
+    flex-direction : column ;
+    justify-content : center ;
+    align-items : center ;
+   
+}
+
+
+.index-box{
+    width : 100% ;
+    height : 100% ;
+    display : flex ;
+    flex-direction: column ;
+    justify-content : center ;
+    align-items : center ;
+    gap : 20px ;
+    
+}
+
+
+.container-table td {
+	  font-weight: normal;
+	  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.container-table {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 80%;
+	  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
+}
+
+.container-table td, .container-table th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.container-table tr:nth-child(odd) {
+	  background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.container-table tr:nth-child(even) {
+	  background-color: #2C3446;
+}
+
+.container-table th {
+	  background-color: #1F2739;
+}
+
+.container-table td:first-child { color: #FB667A; }
+
+.container-table tr:hover {
+   background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+	        box-shadow: 0 6px 6px -6px #0E1119;
+}
+.table-header {
+ color: var(--white);
+ margin-left: 0;
+  margin-right: 0;
+ align-items: center;
+ display: flex;
+ justify-content: space-around;
+ gap: 1rem;
+ 
+
+}
+
+.container-table td:hover {
+  background-color: #0c9b0c;
+  color: #403E10;
+  font-weight: bold;
+  
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+/* 
+
+/*======End of Media Queries======*/
+
+
+
+.fieldset form{
+  border:1px solid #2f2f2f;
+  margin:0 auto;
+  display:block;
+  width:100%;
+  padding:30px 20px;
+  box-sizing:border-box;
+  border-radius:0 0 3px 3px;
+}
+.placeholder #registration-form label {
+  display: none;
+}
+ .no-placeholder #registration-form label{
+margin-left:5px;
+  position:relative;
+  display:block;
+  color:grey;
+  text-shadow:0 1px white;
+  font-weight:bold;
+}
+
+.no-placeholder #registration-form input[type=text] {
+  padding: 10px 20px;
+}
+
+
+
+.container-idex{
+   max-width: 92rem;
+   width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+   
+}
+
+
+/* === THE MAIN PAGE HEADER === */
+header .nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  
+}
+
+.lists{
+  display: flex;
+  gap: 1rem;
+  text-decoration: none;
+}
+.image-wrapper{
+  height: 6vh;
+}
+.image-wrapper img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+
+
+/* === THE MAIN PAGE HEADER === */
+/* === THE MAIN PAGE HEADER === */
+
+
+/*======Recipe form css======*/
+
+
+/*======SCSS=========================================================================================================================*/
+/*======SCSS=========================================================================================================================*/
+/*======SCSS=========================================================================================================================*/
+/*======SCSS=========================================================================================================================*/
+/*======SCSS=========================================================================================================================*/
+/*======SCSS=========================================================================================================================*/
+
+ul,
+a,
+li,
+button {
+  list-style: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+/*======question css========================================*/
+.container-modal{
+  background-color: lightblue;
+  width:400px;
+  margin:10em auto;
+  padding:20px;
+}
+h3{
+  text-align:center;
+}
+h2{
+  float:right;
+  position:absolute;
+  top:219px;
+  right:750px;
+  border-radius:10px;
+}
+#next{
+  width:100px;
+  padding:10px;
+  border-radius:10px;
+  background-color: yellowgreen;
+  border-style:none;
+  
+}
+
+/*======question css========================================*/
+/*======question css========================================*/
+/*======question css========================================*/
+/*======question css========================================*/
+/*======question css========================================*/
+/*======question css========================================*/
+/*======question css========================================*/
+/*======question css========================================*/
+
+ul.one-navbar {
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #0F0501;
+}
+
+ul.one-navbar li {float: left;}
+
+ul.one-navbar li a {
+  display: block;
+  color: #4DC3FA;
+  font-size:2em; 
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.one-navbar  li a:hover:not(.active) {background-color: #5D145F;}
+
+ul.one-navbar  li a.active {background-color: #D10000;}
+
+.one-header {
+   background-color: #00B5D3;
+    color: #4DC3FA;
+    padding: 100px;
+    text-align: center;
+}
+ul li a, .one-navbar {
+color: #4DC3FA
+
+}
+
+
+
+.bg-4 {
+    background-color: #0F0501; /* Black Gray */
+    color: #fff;
+    padding-top: 40px;
+    margin-top: 70px;
+    
+}
+.one-navbar {
+color: #4DC3FA;
+}
+
+
+footer {
+padding: 20px 15px !important;
+
+}
+
+#next-button{
+  background-color: #4FBC28; 
+  color: white; 
+  padding: 16px;
+  text-align: center; 
+  margin-top: 20px; 
+  margin-left: 1rem;  
+}
+
+/*=========action button css===========*/
+.button-action{
+  position:relative;
+  display:inline-block;
+  margin:20px;
+}
+
+.button-action a{
+  color:white;
+  font-family:Helvetica, sans-serif;
+  font-weight:bold;
+  font-size:36px;
+  text-align: center;
+  text-decoration:none;
+  background-color:#FFA12B;
+  display:block;
+  position:relative;
+  padding:20px 40px;
+  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-shadow: 0px 1px 0px #000;
+  filter: dropshadow(color=#000, offx=0px, offy=1px);
+  
+  -webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+  -moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+  box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+  
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.button-action a:active{
+  top:10px;
+  background-color: #FFA12B;
+  
+  -webkit-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+  -moz-box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
+  box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+}
+
+.button-action:after{
+  content:"";
+  height:100%;
+  width:100%;
+  padding:4px;
+  position: absolute;
+  bottom:-15px;
+  left:-4px;
+  z-index:-1;
+  background-color:#2B1800;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.container-action{
+  margin-top: 2rem ;
+ 
+}
+
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+
+#item-display{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  color: #4DC3FA;
+}
+
+
+
+/*======SCSS===========================================================================*/
+
+/*======SCSS===========================================================================*/
+
+/*======SCSS===========================================================================*/
+
+/*======SCSS===========================================================================*/
+
+/*======SCSS===========================================================================*/
+main {
+    margin: 60px auto;
+    position: relative;
+    width: 200px;
+}
+
+.main-folder-part {
+    background-image: linear-gradient(180deg, #ffcb66 0%, #ffcb66 100%);
+    box-shadow: inset 0 1px 3px 0 rgba(255,255,255,0.50), 0 -2px 2px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    height: 150px;
+    position: relative;
+    width: 200px;
+}
+.main-folder-part:after {
+    content:'';
+    box-shadow: 0 8px 8px 0 rgba(119, 233, 13, 0.6);
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.back-folder-part {
+    height: 150px;
+    position: absolute;
+    width: 200px;
+}
+.back-folder-part:after {
+    background:  #ffcb66;
+    border-radius: 5px 5px 0 0;
+    content:'';
+    height: 20px;
+    position: absolute;
+    top: -15px;
+    width: 150px;
+}
+.back-folder-part:before {
+    background:  #ffcb66;
+    border-radius: 0 5px 0 0;
+    content:'';
+    height: 10px;
+    position: absolute;
+    right: 2px;
+    top: -6px;
+    width: 150px;
+}
+
+.add-icon {
+    background-image: linear-gradient(179deg, #B6F9A5 0%, #79C166 95%);
+    border-radius: 9999px;
+    bottom: -15px;
+    box-shadow: 0 4px 12px 0 rgba(79,140,62,0.40), inset 0 1px 3px 0 rgba(255,255,255,0.50);
+    height: 50px;
+    right: -15px;
+    position: absolute;
+    width: 50px;
+}
+.add-icon:before, .add-icon:after {
+    background: #5D9D4D;
+    border-radius: 9999px;
+    content: '';
+    position: absolute;
+}
+.add-icon:after {
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.10), 0 1px 0 rgba(255,255,255,0.6);
+    height: 24px;
+    left: calc(50% - 2px);
+    top: calc(50% - 12px);
+    width: 4px;
+}
+.add-icon:before {
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.10), 0 1px 0 rgba(255,255,255,0.6);
+    height: 4px;
+    left: calc(50% - 12px);
+    top: calc(50% - 2px);
+    width: 24px;
+}
+.paragraph {
+    color: var(--blue-color);
+    font-size: 1em;
+    font-weight: 700;
+    text-transform: uppercase;
+
+
+
+ 
+}
+.tabl-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.input-text{
+  color: white;
+}
+
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+/*======SCSS===========================================================================*/
+
+
+
+
+ /*======SCSS===========================================================================*/
+ /*======SCSS===========================================================================*/
+ /*======SCSS===========================================================================*/
+ /*======SCSS===========================================================================*/
+ /*======SCSS===========================================================================*/
+
+ 
+
+ /*======SCSS====card-box css=======================================================================*/
+    /* RECPES CARDS CSS */
+/*======SCSS====card-box css=======================================================================*/
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+ 
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.cardContainer__body {
+  background-color: var(--bgc-bullet);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.cardContainer__body:hover {
+  transform: translateY(-10px);
+}
+
+.cardImage_box {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardContent_box {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardContent_box__title {
+  font-size: 0.8em;
+  color: var(--white);
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.cardBtn {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cardBtn__link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.cardBtn__link:hover {
+  background-color: #0056b3;
+}
+.cardBtn__link3 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: red;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.cardBtn__link3:hover {
+  background-color: #0056b3;
+}
+
+
+
+/*======SCSS====card-box css=======================================================================*/
+    /* RECPES CARDS CSS END */
+.cardBtn__link2 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: red;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.cardBtn__link2:hover {
+  background-color: #0056b3;
+}
+
+
+.recipePage-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem 1rem;
+  background-color: var(--bgc-bullet);
+}
+
+.recipePage-btn__link {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+.recipePage-btn__link:hover {
+  background-color: var(--light-Pink);
+}
+
+@media screen and (max-width: 768px) {
+  .cardContainer {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+}
+
+ /*======SCSS====card-box css=======================================================================*/
+    /* RECPES CARDS CSS END */
+/*======SCSS====card-box css==============
+/*=========================================================================*/
+
+/*======SCSS====RECIPE FORM CSS - 1 r=css==============
+/*=========================================================================*/
+.goback-btne{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.goback-btne a{
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.2s;
 }

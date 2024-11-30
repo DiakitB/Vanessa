@@ -1,12 +1,56 @@
-extends layout 
+extends layout
 
 block content
- .container 
-        .row 
-         div(class="col col sm-12 col-md-6 col-lg-3")
-          h1 Welcome to Recipe Bank
-          p This is a collection of recipes from around the world. 
-          p Please click on the links above to view the recipes. 
-          p Enjoy!
+  // create a div that contains the slogan of the website
+ 
+  .index-box
+    .container-idex
+      a.button(href="/file/family")
+        .plate
+        .plate
+        .plate
+        .plate
+        .plate
+        .button__wrapper
+          span.button__text FILES
+        .button__box
+          .inner.inner__top
+          .inner.inner__front
+          .inner.inner__bottom
+          .inner.inner__back
+          .inner.inner__left
+          .inner.inner__right
+    .container-idex
+      a.button(href="/travel/items")
+        .plate
+        .plate
+        .plate
+        .plate
+        .plate
+        .button__wrapper
+          span.button__text TRAVEL
+        .button__box
+          .inner.inner__top
+          .inner.inner__front
+          .inner.inner__bottom
+          .inner.inner__back
+          .inner.inner__left
+          .inner.inner__right
+    .container-idex
+      a.button(href="/kitchen/recipes")
+        .plate
+        .plate
+        .plate
+        .plate
+        .plate
+        .button__wrapper
+          span.button__text RECIPES
+        .button__box
+          .inner.inner__top
+          .inner.inner__front
+          .inner.inner__bottom
+          .inner.inner__back
+          .inner.inner__left
+          .inner.inner__right
 
-        a(href="/kitchen/recipes") View Recipes
+

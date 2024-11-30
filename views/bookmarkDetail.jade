@@ -19,8 +19,8 @@ block content
           each instruction, index in recipe.instructions
             li #{index + 1}. #{instruction}
       div.card8-actions
-        a(href='/kitchen/all-recipes' class='interact') Back to Recipes
-        a(href=`/kitchen/cart/${recipe._id}` class='interact') Bookmark Recipe
+        a(href='/recipes/bookmarks' class='interact') Back to Recipes
+       
       style.
         .card8-container {
           display: flex;
@@ -90,5 +90,3 @@ block content
         .card8-actions .interact:hover {
           text-decoration: underline;
         }
-
-

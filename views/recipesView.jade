@@ -1,28 +1,114 @@
-extends layout 
+extends layout
+link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
 
 block content
-  .container
-    .row
-      each recipe in recipes
-        .col-md-4
-          .card(style="width: 18rem;")
-            img.card-img-top(src=`uploads/${recipe.image}`, alt="...")
-            .card-body
-              h5.card-title #{recipe.title}
-              h6.card-subtitle.mb-2.text-muted Card subtitle
-              p.card-text #{recipe.instructions}.
-              a.btn(href=recipe.url)  View Recipe
-                i.fab.fa-github 
-                |  
+  nav.navbar
+    .logo
+     
+    .menu-icon(onclick="toggleMenu()")
+      i.fas.fa-bars
+    .menu
+      a(href="/kitchen/all-recipes") Get Recipes
+      a(href="/kitchen/create") Add Recipe
+      a(href="/recipes/bookmarks") Bookmarked
+  .main-section 
+    h1 Welcome to Recipe Finder
+    p Find your favorite recipes here
+    form.formGroup(action="/kitchen/search", method="GET")
+      input(type="text", name="search", placeholder="Search for recipes")
+      button(type="submit") Search
+  script.
+    function toggleMenu() {
+      const menu = document.querySelector('.navbar .menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+   
+  style.
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    
+      padding: 10px 20px;
+    }
 
+    .logo {
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+    }
 
+    .menu-icon {
+      display: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
 
+    .menu {
+      display: flex;
+      gap: 20px;
+    }
 
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      border: 1px solid #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #333;
+    }
+    .menu a:hover {
+      background-color: #fff;
+      color: #323232;
+      
+    }
+    .main-section {
+      text-align: center;
+      padding: 50px 20px;
+    }
 
+    .main-section h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
 
+    .main-section p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
 
+    .formGroup {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
 
+    .formGroup input {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+    }
 
+    .formGroup button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
 
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+      }
 
-        
+      .menu-icon {
+        display: block;
+      }
+    }
+

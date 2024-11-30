@@ -7,11 +7,12 @@ const recipeSchema = new schema({
   image: { type: String, required: true },
   ingredients: {
     type: [],
-    required: true,
+   
   },
-  category: { type: String, required: true },
-  instructions: { type: String, required: true },
-  servings: { type: Number, required: true },
+
+  instructions: { type: [], required: true },
+  servings: { type: Number},
+  
 });
 recipeSchema.virtual("url").get(function () {
   // We don't use an arrow function as we'll need the this object

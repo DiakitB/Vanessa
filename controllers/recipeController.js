@@ -2,30 +2,72 @@ const asyncHandler = require("express-async-handler");
 
 const Recipe = require("../models/recipeModel");
 const ingredient = require("../models/ingredientModel");
+const Bookmark = require("../models/bookmarkModel");
 const unit = require("../models/unitModel");
 const { body, validationResult } = require("express-validator");
 const multer = require('multer');
-const upload = multer({dest: '/public/images/'});
+
+
+
+// create a storage object that store file in pyblic/data/uploads
+ const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, './public/data/uploads');
+    },
+    filename: function(req, file, cb) {
+      cb(null, file.originalname);
+    }
+ });
+
+console.log(storage);
+
+const upload = multer({ storage: storage });
+
+
+
+
+
+
+
+
 exports.index = asyncHandler(async (req, res) => {
- console.log("index route");
+
  
 
   res.render("index");
 });
 
 
-
-
-//create controllers for the following: getRecipe, createRecipe_get, createRecipe_post, updateRecipe_get, updateRecipe_post, deleteRecipe
-exports.getAllRecipes = asyncHandler(async (req, res) => {
-
-  const recipes = await Recipe.find();
-  console.log(recipes);
-  res.render("recipesView", { recipes: recipes });
+// create a search function that takes a search query and return a list of recipes that title contains the search query
+exports.searchRecipe = asyncHandler(async (req, res) => {
+  const search = req.query.search;
+  console.log(search);
+  const recipes = await Recipe.find({ title: { $regex: search, $options: "i" } });
+  if (!recipes) {
+    res.send("no recipes found");
+  }
+  res.render("recipes", { recipes: recipes });
 });
+
+
+
+
+
+
+exports.recipes = asyncHandler(async (req, res) => {
+
+  
+  
+  res.render("recipesView");
+});
+
+///create a function that takes a recipe and bookmaks it
+
+
 
 exports.getRecipe = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById(req.params.id);
+ 
   res.render("show", { recipe: recipe });
 });
 
@@ -54,11 +96,7 @@ exports.createRecipe_post = [
     .isLength({ min: 1 })
     .escape()
     .withMessage("Ingredients are required"),
-  body("category")
-    .trim()
-    .isLength({ min: 1 })
-    .escape()
-    .withMessage("category are required"),
+
   body("instructions")
     .trim()
     .isLength({ min: 1 })
@@ -66,37 +104,31 @@ exports.createRecipe_post = [
     .withMessage("instructions are required"),
   body("servings").trim().isNumeric().withMessage("Servings are required"),
 
-   upload.single('image'), (req, res, next) => {
-   
-    if (!req.file) {
-      console.log("No image received");
-      return res.send({
-        success: false
-      });
+  upload.single('image'), (req, res, next) => {
   
-    } else {
-      console.log('image received');
-      return next();
-    }
-  },
 
+ 
+  next();
+ }
+  ,
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
-  console.log(req.file);
-  const image = req.file.filename;
-    const { title,  ingredients, unit, category, instructions, servings } =req.body;
+    console.log(req.body);
+  const image = req.file.originalname;
+    const { title,  ingredients, units,  instructions, servings } =req.body;
+   
 
     
-    function zipArrays(keysArray, valuesArray) {
-      console.log(keysArray, valuesArray);
-    }
-    const ingredient = zipArrays(unit, ingredients);
-    
+    ///CREAT A FUNCTION THAT TAKES TWO ARRAYS AND MERGE THEM INTO ONE ARRAY OF OBJECTS
+    const ingredient = ingredients.map((ingredient, index) => {
+      return { ingredient: ingredient, unit: units[index] };
+    });
+ 
+ 
     const recipe = new Recipe({
       title,
       image,
       ingredients: ingredient,
-      category,
       instructions,
       servings,
     });
@@ -105,6 +137,7 @@ exports.createRecipe_post = [
     res.redirect("/");
   }),
 ];
+
 
 exports.updateRecipe_get = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById(req.params.id);
@@ -121,15 +154,35 @@ exports.deleteRecipe = asyncHandler(async (req, res) => {
   res.redirect("/");
 });
 
-/// create a function that takes a string , loop over it and mask all the odd numbers with a "*"
-// function maskOddNumbers(str) {
-//   let result = "";
-//   for (let i = 0; i < str.length; i++) {
-//     if (parseInt(str[i]) % 2 !== 0) {
-//       result += "*";
-//     } else {
-//       result += str[i];
-//     }
-//   }
-//   return result;
-// }
+
+exports.getAllRecipes = asyncHandler(async (req, res) => {
+
+
+ 
+  const recipes = await Recipe.find();
+  res.render("recipes", { recipes: recipes });
+});
+
+exports.vanessaRouter = asyncHandler(async (req, res) => {
+
+  res.render("vanessa");
+});
+
+exports.addRecipeToBookmarks = asyncHandler(async (req, res) => {
+ 
+  const recipe = await Recipe.findById(req.params.id);
+ const bookmarks = await Bookmark.find();
+//  console.log(typeof bookmarks);
+//   console.log(bookmarks);
+  const [bookmark] = bookmarks;
+ if (bookmark.bookmarked.includes(recipe)) {
+    res.send("recipe already bookmarked");
+  }
+  
+  const bookMarkedRecipe = [...bookmark.bookmarked, recipe];
+  bookmark.bookmarked = bookMarkedRecipe;
+  await bookmark.save();
+  
+ 
+  res.redirect(`/kitchen/recipe/${req.params.id}`);
+});

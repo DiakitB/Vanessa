@@ -5,7 +5,17 @@ extends layout
 
 
 block content
-  h1 Create Ingredient
+  header 
+    .container 
+      .nav-bar 
+        .logo 
+          a(href="/") LOGO
+        nav
+          ul 
+            li: a(href="/kitchen/recipes") Recipes
+            li: a(href="/kitchen/create") Create
+            li: a(href="/kitchen/recipes") Recipes
+            li: a(href="/kitchen/recipes") Rec
   form(method="POST")
     div(class="form-group")
       label(for="name") Name
