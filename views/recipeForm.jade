@@ -4,13 +4,13 @@ extends layout
 
 block content 
 
- form(action="/kitchen/create", method="POST")
+ form(action="/kitchen/create", method="POST" enctype="multipart/form-data")
    div(class="form-group")
      label(for="title") Title
      input(type="text", name="title", class="form-control", id="title")
    div(class="form-group")
      label(for="image") Image
-     input(type="file", name="image", class="form-control", id="image")
+     input(type="file", accept='image' name="image", class="form-control", id="image")
    div(class="form-group")
      label(for="category") Category
      input(type="text", name="category", class="form-control", id="category")
@@ -19,8 +19,8 @@ block content
       textarea(name="instructions", class="form-control", id="instructions")
    div(class="box")
      div.form-group
-      label(for='ingredient') Ingredient:
-      select#ingredient.form-control(name='ingredient' required multiple)
+      label(for='ingredients') Ingredients :
+      select#ingredient.form-control(name='ingredients' required multiple)
         option(value='') --Please select an ingredient--
         for ingredient in ingredients
             if ingredient.selected

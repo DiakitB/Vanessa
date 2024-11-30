@@ -6,7 +6,7 @@ const recipeSchema = new schema({
   title: { type: String, required: true },
   image: { type: String, required: true },
   ingredients: {
-    type: {},
+    type: [],
     required: true,
   },
   category: { type: String, required: true },
@@ -15,7 +15,7 @@ const recipeSchema = new schema({
 });
 recipeSchema.virtual("url").get(function () {
   // We don't use an arrow function as we'll need the this object
-  return `/kitchen/book/${this._id}`;
+  return `/kitchen/recipe/${this._id}`;
 });
 
 module.exports = mongoose.model("Recipe", recipeSchema);

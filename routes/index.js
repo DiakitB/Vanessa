@@ -3,7 +3,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.redirect("/kitchen");
+  console.log("index route");
+
+  res.render("index");
 });
 
 module.exports = router;

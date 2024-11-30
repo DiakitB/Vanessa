@@ -1,6 +1,7 @@
 #!/usr/bin / env node
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const multer = require("multer");
 /**
  * Module dependencies.
  */
@@ -12,6 +13,16 @@ const http = require("http");
 const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.PASSWORD);
 
 mongoose.connect(DB, {}).then(() => console.log("DB connection successful!"));
+
+
+const storage = multer.diskStorage({
+  destination: function(req, file, callback) {
+    callback(null, '/public/images');
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname);
+  }
+});
 
 /**
  * Get port from environment and store in Express.
