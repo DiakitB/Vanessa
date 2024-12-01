@@ -79,11 +79,11 @@ exports.makePayment = asyncHandler(async (req, res) => {
 
 exports.testFolderGet = asyncHandler(async (req, res) => {
 
-    res.render('testFile', { title: 'TEST FOLDER' });
+    res.render('test2', { title: 'TEST FOLDER' });
 });
 exports.testFolderPost = asyncHandler(async (req, res) => {
     console.log('THIS IS THE BODY');
 console.log(req.body);
-    res.render('testFile', { title: 'TEST FOLDER' });
+    res.render('test2', { title: 'TEST FOLDER' });
 });
 

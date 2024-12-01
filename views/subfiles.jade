@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  button.subBtn 
+    a.goback(href="/file/family") Back to Files  
   .files-ui
     .subfile-container
       each file in files
@@ -10,11 +12,6 @@ block content
           button.folder-btn.btn-texting
               a(href=file.url) Open
                 p.paragraph #{file.title}
-    .goback 
-      a.goback(href="/file/family") Back to Files  
-      
-        
-    
+     
 
-       
-   
+      

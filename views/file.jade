@@ -1,36 +1,80 @@
+  
+ 
+
 extends layout 
 
 block content
-  .file-ui 
-    .table-container 
-      form( method="POST" )
-            div(class="form-group ")
-            label(for="payment") Make Payment  
-            input(type="text", name="payment", class="form-control input-text", id="payment")
+  form( method="post")
+    label(for="payment") Payment:
+    input(type="number", name="payment", required id="payment")
+    button(type="submit", value="Submit") Make Payment
+    button 
+      a.gobackfile(href="/file/subfiles") Back to Files
 
-            input.input-text1(type="submit", value="Submit")
-    
-      
-      
-    .table-header 
-      .file-name 
-        h3 #{file.title}
+  div(style="text-align: right; font-weight: 700; color: white") Balance:  #{Number(file.totalAmount) -  Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0) )}
 
-      .file-total 
-        h3 Balance: #{Number(file.totalAmount) -  Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0) )}
-    table.container-table
-      thead
+  table
+    thead
+      tr
+        th Date
+        th Payment
+    tbody
+      each payment in file.payments
         tr
-          th
-            h1 Date
-          th
-            h1 Payment
-      tbody
-        each payment in file.payments
-          tr
-            td #{payment.date}
-            td #{payment.payment}
-  
- input(type="text", class="te12 tesx12", name="name", id="name", value="test")
+          td #{payment.date}
+          td #{payment.payment}
+  style.
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+    }
 
- 
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+
+    form {
+      margin-top: 20px;
+      display: flex;
+      justify content: center;
+      gap: 10px;
+    }
+
+    div {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: inline-block;
+      width: 100px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: white;
+    }
+    .gobackfile {
+     padding: 12px 10px;
+      border: none;
+      border-radius: 5px;
+      
+    }
+      
+    

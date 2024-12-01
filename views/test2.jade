@@ -1,36 +1,34 @@
-  
- extends layout 
-
+extends layout
 
 block content
+  
+  div(ontouchstart="" class="container-action")
+    .button-action
+      a(href="/travel/create") New Item
+       
+  script.
+    let currentIndex = 0;
+    const items = !{JSON.stringify(item)};
+    
+    function showNextItem() {
+      if (currentIndex < items.length) {
+        const item = items[currentIndex];
+        const userResponse = confirm(`Have you packed your  ${item}?`);
+        if (userResponse) {
+          currentIndex++;
+          if (currentIndex < items.length) {
+        
+            document.getElementById('next-button').innerText = 'NEXT ITEM';
+          } else {
+            document.getElementById('item-display').innerText = 'You got everything you need for this trip!';
+            document.getElementById('next-button').style.display = 'none';
+          }
+        } else {
+          alert(`You need to pack ${item}`);
+        }
+      }
+    }
+
+  button#next-button(onclick="showNextItem()") START
+  p#item-display
  
-// create a beautiful flower made out of red and white roses
-div.flower
-    div.rose.red
-        | 🌹
-    div.rose.white
-        | 🌹
-    div.rose.red
-        | 🌹
-    div.rose.white
-        | 🌹
-    div.rose.red
-        | 🌹
-        <style>
-            .flower {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-            .rose {
-                font-size: 2em;
-                margin: 5px;
-            }
-            .rose.red {
-                color: red;
-            }
-            .rose.white {
-                color: white;
-            }
-        </style>

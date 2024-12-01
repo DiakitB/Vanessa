@@ -15,7 +15,7 @@ exports.getAllItems = asyncHandler(async (req, res) => {
  
 
    const item = items.items;
-  console.log(item);
+  
    
     res.render('travelitems', { item });
 });
@@ -28,20 +28,23 @@ exports.getOneItem = asyncHandler(async (req, res) => {
 }); 
 
 exports.create_getItem = asyncHandler(async (req, res) => {
-    res.render('travelForm', { title: 'CREATE ITEM' });
+    res.render('travelItemForm', { title: 'CREATE ITEM' });
 });
 
 
 exports.create_postItem = asyncHandler(async (req, res) => {
-    const item = await Travelitems.findOne({ name: req.body.title });
-    if (item) {
-        res.render('travelForm', { title: 'CREATE ITEM', errors: 'Item name already exists' });
-    } else {
-        const newItem = new Travelitem(req.body);
-        await newItem.save();
-        res.redirect('/travel/items');
-    }
+    const items = await Travelitems.find();
+
+    const [item] = items;
+  
+    const newItem = req.body.title;
+   
+    item.items.push(newItem);
+    await item.save();
+    res.redirect('/travel/items');
 });
+
+
 
 exports.deleteItem = asyncHandler(async (req, res) => {
     await Travelitems.findByIdAndDelete(req.params.id);

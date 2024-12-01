@@ -1,9 +1,9 @@
 const asyncHandler = require("express-async-handler");
 
 const Recipe = require("../models/recipeModel");
-const ingredient = require("../models/ingredientModel");
+
 const Bookmark = require("../models/bookmarkModel");
-const unit = require("../models/unitModel");
+
 const { body, validationResult } = require("express-validator");
 const multer = require('multer');
 
@@ -72,10 +72,9 @@ exports.getRecipe = asyncHandler(async (req, res) => {
 });
 
 exports.createRecipe_get = asyncHandler(async (req, res) => {
-  const ingredients = await ingredient.find();
-  const units = await unit.find();
 
-  res.render("recipeForm", { ingredients: ingredients, units: units });
+
+  res.render("recipeForm");
 });
 
 //////////////

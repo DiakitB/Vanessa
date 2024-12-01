@@ -4,16 +4,14 @@
 extends layout
 
 block content 
-  h1 Add a New File
+  h1 Add a New Item
   form(method='post' )
     div.form-group
-      label(for='title') File Name
+      label(for='title') Item Name
       input(type='text' placeholder="File name" name='title' id='title' required)
   
 
-    div.form-group
-      label(for='totalAmount') Total Amount:
-      input(type='number' name='totalAmount' id='totalAmount' required)
+    
  
       div.sub-btn
         button(type='submit' value="Create File") Submit
@@ -84,27 +82,3 @@ block content
     
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
