@@ -8,6 +8,8 @@ const indexRouter = require("./routes/index");
 const fileRouter = require("./routes/family");
 const travelRouter = require("./routes/travel"); // Import the travel router
 const bookmaksRouter = require("./routes/bookmark");
+const flash = require("express-flash");
+const session = require("express-session");
 
 // Compare this snippet from routes/kitchen.js:
 const kitchenRouter = require("./routes/kitchen"); // Import the kitchen router
@@ -18,6 +20,13 @@ const app = express();
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
+
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(flash());
 
 app.use(logger("dev"));
 app.use(express.json());

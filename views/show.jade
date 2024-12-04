@@ -21,6 +21,7 @@ block content
       div.card8-actions
         a(href='/kitchen/all-recipes' class='interact') Back to Recipes
         a(href=`/kitchen/cart/${recipe._id}` class='interact') Bookmark Recipe
+        
       style.
         .card8-container {
           display: flex;
@@ -90,15 +91,18 @@ block content
         .card8-actions .interact:hover {
           text-decoration: underline;
         }
-        @media (max-width: 768px) {
+         @media (max-width: 600px) {
+          .card8 {
+            max-width: 100%;
+              margin: 0;
+              border-radius: 0
+          } 
           .card8-container {
-            background-color: red ;
-          }
-
-          .card8{
-            display: grid;
-            grid-template-columns: 1fr;
-          }
+              padding: 0;
+            }
         }
 
 
+
+
+      

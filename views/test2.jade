@@ -6,29 +6,65 @@ block content
     .button-action
       a(href="/travel/create") New Item
        
+ 
   script.
-    let currentIndex = 0;
-    const items = !{JSON.stringify(item)};
-    
-    function showNextItem() {
-      if (currentIndex < items.length) {
-        const item = items[currentIndex];
-        const userResponse = confirm(`Have you packed your  ${item}?`);
-        if (userResponse) {
-          currentIndex++;
-          if (currentIndex < items.length) {
-        
-            document.getElementById('next-button').innerText = 'NEXT ITEM';
-          } else {
-            document.getElementById('item-display').innerText = 'You got everything you need for this trip!';
-            document.getElementById('next-button').style.display = 'none';
+    document.addEventListener('DOMContentLoaded', function() {
+      
+    const items = !{JSON.stringify(item)}
+      
+      function checkItems() {
+        for (let i = 0; i < items.length; i++) {
+          let packed = confirm(`Have you packed your ${items[i]}?`);
+          if (!packed) {
+            alert(`You need to pack your ${items[i]} before you can move on.`);
+            return;
           }
+        }
+        alert('You have everything for the trip!');
+      }
+
+      const startButton = document.createElement('button');
+      startButton.innerText = 'Start';
+      startButton.onclick = checkItems;
+      document.body.appendChild(startButton);
+    });
+  
+
+    script.
+    document.addEventListener('DOMContentLoaded', function() {
+      
+    const items = !{JSON.stringify(item)}
+      let currentIndex = 0;
+
+      const startButton = document.createElement('button');
+      startButton.innerText = 'Start';
+      startButton.onclick = startPackingCheck;
+      document.body.appendChild(startButton);
+
+      function startPackingCheck() {
+        if (currentIndex < items.length) {
+          const item = items[currentIndex];
+          const questionDiv = document.createElement('div');
+          questionDiv.innerText = `Have you packed your ${item}?`;
+          const yesButton = document.createElement('button');
+          yesButton.innerText = 'Yes';
+          yesButton.onclick = () => {
+            currentIndex++;
+            questionDiv.remove();
+            startPackingCheck();
+          };
+          const noButton = document.createElement('button');
+          noButton.innerText = 'No';
+          noButton.onclick = () => {
+            alert(`You need to pack your ${item} before you can move on.`);
+          };
+          questionDiv.appendChild(yesButton);
+          questionDiv.appendChild(noButton);
+          document.body.appendChild(questionDiv);
         } else {
-          alert(`You need to pack ${item}`);
+          alert('You have everything for the trip!');
         }
       }
-    }
-
-  button#next-button(onclick="showNextItem()") START
-  p#item-display
+    });
+ 
  

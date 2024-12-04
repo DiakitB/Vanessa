@@ -33,7 +33,7 @@ exports.deleteBookmark = asyncHandler(async (req, res) => {
   console.log(req.params)
   const bookmarks = await Bookmark.find();
   const [bookmark] = bookmarks;
-  console.log(bookmark);
+
   const recipes = bookmark.bookmarked;
 
   const recipe = recipes.find((recipe) => recipe._id == req.params.id);

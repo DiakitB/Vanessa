@@ -112,7 +112,7 @@ exports.createRecipe_post = [
   ,
   asyncHandler(async (req, res) => {
     const errors = validationResult(req);
-    console.log(req.body);
+   
   const image = req.file.originalname;
     const { title,  ingredients, units,  instructions, servings } =req.body;
    
@@ -168,14 +168,19 @@ exports.vanessaRouter = asyncHandler(async (req, res) => {
 });
 
 exports.addRecipeToBookmarks = asyncHandler(async (req, res) => {
- 
+ console.log("add recipe to bookmarks");
   const recipe = await Recipe.findById(req.params.id);
  const bookmarks = await Bookmark.find();
 //  console.log(typeof bookmarks);
 //   console.log(bookmarks);
   const [bookmark] = bookmarks;
- if (bookmark.bookmarked.includes(recipe)) {
-    res.send("recipe already bookmarked");
+// check if the recipe is already in bookmark array if it is do not add it again and alert the user that the recipe is already in the bookmarks and redirect to /kitchen/recipe/:id
+  const found = bookmark.bookmarked.find((ele) => ele._id == req.params.id);
+  console.log(found);
+  if (found) {
+    req.flash('info', 'Flash Message Added');
+    res.redirect(`/kitchen/recipe/${req.params.id}`);
+    return;
   }
   
   const bookMarkedRecipe = [...bookmark.bookmarked, recipe];

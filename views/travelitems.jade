@@ -1,40 +1,109 @@
 extends layout
 
-block content
+
   
+block content
   div(ontouchstart="" class="container-action")
     .button-action
       a(href="/travel/create") New Item
-       
- 
+
   script.
-    let currentIndex = 0;
-    const items = !{JSON.stringify(item)}
+    document.addEventListener('DOMContentLoaded', function() {
+      const items = !{JSON.stringify(item)};
+      let currentIndex = 0;
 
-    function askNextItem() {
-      if (currentIndex < items.length) {
-        var item = items[currentIndex];
-        var packed = confirm('Have you packed your ' + item + '?');
-        if (packed) {
-          currentIndex++;
-          askNextItem();
-        } else {
-          alert('Please pack your ' + item + ' and try again.');
-          askNextItem();
+      const startButton = document.createElement('button');
+      startButton.textContent = 'Start';
+      startButton.className = 'start-button';
+      document.body.appendChild(startButton);
+
+      startButton.addEventListener('click', function() {
+        startButton.style.display = 'none';
+        showNextItem();
+      });
+
+      function showNextItem() {
+        if (currentIndex >= items.length) {
+          alert('You have everything for the trip!');
+          return;
         }
-      } else {
-        alert('You are all set for your trip!');
+
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'item-question';
+        itemDiv.innerHTML = `
+          <p>Have you packed your ${items[currentIndex]}?</p>
+          <button class="yes-button">Yes</button>
+          <button class="no-button">No</button>
+        `;
+        document.body.appendChild(itemDiv);
+
+        itemDiv.querySelector('.yes-button').addEventListener('click', function() {
+          document.body.removeChild(itemDiv);
+          currentIndex++;
+          showNextItem();
+        });
+
+        itemDiv.querySelector('.no-button').addEventListener('click', function() {
+          alert('Please pack your ' + items[currentIndex] + ' before moving on.');
+        });
       }
+    });
+  
+  style.
+    .container-action {
+      text-align: center;
+      margin-top: 20px;
     }
-
-    askNextItem();
-    
- 
-
-
-
-
-
- 
- 
-   
+    .button-action a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .button-action a:hover {
+      background-color: #0056b3;
+    }
+    .start-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .start-button:hover {
+      background-color: #218838;
+    }
+    .item-question {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .item-question p {
+      font-size: 18px;
+      color: white;
+    }
+    .item-question button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .item-question .yes-button {
+      background-color: #28a745;
+      color: white;
+    }
+    .item-question .yes-button:hover {
+      background-color: #218838;
+    }
+    .item-question .no-button {
+      background-color: #dc3545;
+      color: white;
+    }
+    .item-question .no-button:hover {
+      background-color: #c82333;
+    }
