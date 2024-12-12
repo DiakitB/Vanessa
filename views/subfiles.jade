@@ -1,17 +1,51 @@
 extends layout
 
 block content
-  button.subBtn 
-    a.goback(href="/file/family") Back to Files  
-  .files-ui
-    .subfile-container
+  
+  table
+    thead
+      tr
+        th Title
+        th Last Payment Date
+        th Amount
+        th Next Payment Date
+        th Actions
+    tbody
       each file in files
-        main
-          .back-folder-part
-          .main-folder-part
-          button.folder-btn.btn-texting
-              a(href=file.url) Open
-                p.paragraph #{file.title}
-     
-
-      
+        tr
+          td= file.title
+          td= file.lastPaymentDate
+          td= file.amount
+          td= file.nextPaymentDate
+          td
+            button(onclick=`openFile('${file.id}')`) Open
+  style.
+    table {
+      width: 100%;
+      background-color: white;
+      margin-top: 4rem;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+    th {
+      background-color: pink ;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #f2f2f2;
+    }
+ 
+    
+    .btn-texting {
+      text-align: center;
+    }
+    .paragraph {
+      margin: 0;
+    }
+    .files-ui {
+      width: 100%;
+    }

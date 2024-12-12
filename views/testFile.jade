@@ -1,110 +1,12 @@
-extends layout 
-
-
-
-block content
-  h1 File Title
-  form(action="/make-payment" method="post")
-   
-    div
-      label(for="amount") Amount:
-      input(type="text" id="amount" name="amount")
-    div
-      button(type="submit") Make Payment
-  table
-    tr
-      th Payment ID
-      th Amount
-      th Date
-    tr
-      td 1
-      td $100
-      td 2023-10-01
-    tr
-      td 2
-      td $200
-      td 2023-10-02
-
-  style.
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-      }
-
-      th {
-        background-color: #f2f2f2;
-        text-align: left;
-      }
-
-      form {
-        margin-top: 20px;
-        display:flex;
-        gap: 10px;
-
-      }
-
-      div {
-        margin-bottom: 10px;
-      }
-
-      label {
-        display: inline-block;
-        width: 100px;
-      }
-
-      input[type="text"] {
-        width: 200px;
-        padding: 5px;
-      }
-
-      button {
-        padding: 10px 15px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #45a049;
-      }
-///////////
-extends layout 
-
-block content
-  .file-ui 
-    .table-container 
-      form( method="POST" )
-            div(class="form-group ")
-            label(for="payment") Make Payment  
-            input(type="text", name="payment", class="form-control input-text", id="payment")
-
-            input.input-text1(type="submit", value="Submit")
-    
-      
-      
-    .table-header 
-      .file-name 
-        h3 #{file.title}
-
-      .file-total 
-        h3 Balance: #{Number(file.totalAmount) -  Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0) )}
-    table.container-table
-      thead
-        tr
-          th
-            h1 Date
-          th
-            h1 Payment
-      tbody
-        each payment in file.payments
-          tr
-            td #{payment.date}
-            td #{payment.payment}
-  
- input(type="text", class="te12 tesx12", name="name", id="name", value="test")
+button.subBtn 
+    a.goback(href="/file/family") Back to Files  
+  .files-ui
+    .subfile-container
+      each file in files
+        main
+          .back-folder-part
+          .main-folder-part
+          button.folder-btn.btn-texting
+              a(href=file.url) Open
+                p.paragraph #{file.title}
+     

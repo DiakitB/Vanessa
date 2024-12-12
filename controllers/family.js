@@ -12,9 +12,36 @@ const formatDate = (date) => {
     return `${year}-${month}-${day}`;
 };
 
-// Example usage
-const currentDate = new Date();
-console.log(formatDate(currentDate));
+// CREATE A FUNCTION THAT WILL A PAYMENT FREQUENCY AND A DATE AND RETURN THE NEXT PAYMENT DATE
+// THE FUNCTION WILL TAKE IN TWO ARGUMENTS PAYMENT FREQUENCY AND DATE
+const getNextPaymentDate = (paymentFrequency, date) => {
+    const nextDate = new Date(date);
+
+    switch (paymentFrequency) {
+        case 'weekly':
+            nextDate.setDate(nextDate.getDate() + 7);
+            break;
+        case 'biweekly':
+            nextDate.setDate(nextDate.getDate() + 14);
+            break;
+        case 'monthly':
+            nextDate.setMonth(nextDate.getMonth() + 1);
+            break;
+        case 'quarterly':
+            nextDate.setMonth(nextDate.getMonth() + 3);
+            break;
+        case 'annually':
+            nextDate.setFullYear(nextDate.getFullYear() + 1);
+            break;
+        default:
+            throw new Error('Invalid payment frequency');
+    }
+
+    return formatDate(nextDate);
+};
+
+
+// Example usage of the function getNextPaymentDate with a payment frequency of 'monthly' and the current date
 
 exports.getFiles = asyncHandler(async (req, res) => {
    
@@ -38,7 +65,16 @@ exports.getOneFile = asyncHandler(async (req, res) => {
 );
 // create controllers for create_getFile, create_postFile, deleteFile, updateFile, viewFile
  exports.create_getFile = asyncHandler(async (req, res) => {
-    res.render('fileForm', { title: 'CREATE FILE' });
+    // get the enum values for the paymentFrequency
+
+    const currentDate = new Date();
+console.log(getNextPaymentDate('monthly', currentDate));
+console.log(formatDate(currentDate));
+
+    const paymentFrequency = File.schema.path('paymentFrequency').enumValues;
+  
+    res.render('fileForm', { title: 'CREATE FILE', paymentFrequency });
+    
  });
 
     
@@ -59,6 +95,9 @@ exports.getOneFile = asyncHandler(async (req, res) => {
     }
 
 });
+
+
+
 
 exports.makePayment = asyncHandler(async (req, res) => {
     const file = await File.findById(req.params.id);

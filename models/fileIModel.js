@@ -14,9 +14,10 @@ const fileItemSchema = new Schema({
   },
  totalAmount:{
     type:Number,
-   required:true
-  }
-
+    default:0
+   
+  },
+paymentFrequency:{ type: String, enum:['weekly', 'biweekly', 'monthly', 'quarterly', 'annually'] },
  
 });
 
