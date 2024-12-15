@@ -68,3 +68,121 @@ block content
     });
  
  
+block content
+
+  table
+    thead
+      tr
+        th File Title
+        th Last Payment Amount
+        th Next Payment Date
+        th Actions
+  tbody
+    each file in files
+      tr
+        td= file.title
+        td= file.payments.length > 0 ? file.payments[0].payment : 'N/A'
+        td= (() => {
+          if (file.payments.length > 0) {
+            const lastPaymentDate = new Date(file.payments[0].date);
+            let nextPaymentDate;
+            switch (file.paymentFrequency) {
+              case 'monthly':
+                nextPaymentDate = new Date(lastPaymentDate.setDate(lastPaymentDate.getDate() + 30));
+                break;
+              case 'weekly':
+                nextPaymentDate = new Date(lastPaymentDate.setDate(lastPaymentDate.getDate() + 7));
+                break;
+              case 'biweekly':
+                nextPaymentDate = new Date(lastPaymentDate.setDate(lastPaymentDate.getDate() + 14));
+                break;
+              case 'quarterly':
+                nextPaymentDate = new Date(lastPaymentDate.setDate(lastPaymentDate.getDate() + 90));
+                break;
+              case 'annually':
+                nextPaymentDate = new Date(lastPaymentDate.setDate(lastPaymentDate.getDate() + 365));
+                break;
+              default:
+                nextPaymentDate = 'N/A';
+            }
+            return nextPaymentDate.toDateString();
+          } else {
+            return 'N/A';
+          }
+        })()
+        td
+          button(type='button')
+            a(href=file.url) View
+          button(type='button') Delete
+          
+  style.
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+    button {
+      margin-right: 5px;
+      padding: 5px 10px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+
+
+    ///
+        table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      text-align: center;
+      font-weight: bold;
+      background-color: lightblue;
+      border: 1px solid black;
+    }
+    th {
+      font-size: 1.5em;
+      background-color: #ff4f87;
+      color : white;
+    }
+    td {
+      font-size: 1.2em;
+    }
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+    a.btn {
+      display: inline-block;
+      padding: 0.5em 1em;
+      text-decoration: none;
+      background-color: blue;
+      color: white;
+      border-radius: 5px;
+    }
+
+    a.btn-primary {
+      background-color: blue;
+    }
+
+    a.btn-danger {
+      background-color: red;
+    }
+    .goback-button {
+      margin-bottom: 20px;
+    }

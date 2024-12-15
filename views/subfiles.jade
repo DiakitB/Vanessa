@@ -1,35 +1,74 @@
-extends layout
-
 block content
-  
-  table
+
+  h1 Sub Files
+
+  .goback-button
+    a.btn.btn-primary(href='/file/family') Go Back
+  table.table.table-striped
     thead
       tr
-        th Title
-        th Last Payment Date
-        th Amount
+        th File Name
+        th Last Payment Amount
         th Next Payment Date
-        th Actions
+        th Payment Frequency
+      
     tbody
-      each file in files
+      each file, i in files
         tr
           td= file.title
-          td= file.lastPaymentDate
-          td= file.amount
-          td= file.nextPaymentDate
+          td= file.payments.length > 0 ? file.payments[0].payment : 'N/A'
+          td= file.nextDate? file.nextDate : 'N/A'
+        
           td
-            button(onclick=`openFile('${file.id}')`) Open
+            a.btn.btn-primary(href=`/file/subfiles/${file._id}`) View
+           
+
   style.
     table {
       width: 100%;
-      background-color: white;
-      margin-top: 4rem;
+      
     }
     th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  th {
-    background-color: #f2f2f2;
-  }
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #004658;
+    }
+  
+    a {
+      text-decoration: none;
+      
+     
+    }
+    a:hover {
+      color: black;
+    }
+    .goback-button {
+      margin-bottom: 20px;
+      border: 1px solid black;
+      padding: 10px;
+      width: 100px;
+      text-align: center;
+      curser : pointer;
+      background-color : #f2f2f2;
+    }
+    .goback-button a {
+      text-decoration: none;
+      
+    }
+    .goback-button a:hover {
+      color: black;
+      
+    }
+    h1{
+      text-align: center;
+      
+    }
