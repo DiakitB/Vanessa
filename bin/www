@@ -2,6 +2,7 @@
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const multer = require("multer");
+const compression = require("compression");
 /**
  * Module dependencies.
  */
@@ -10,7 +11,7 @@ const app = require("../app");
 const debug = require("debug")("vanessa:server");
 const http = require("http");
 
-const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.PASSWORD);
+const DB = process.env.MONGODB_URI || process.env.DATABASE.replace("<PASSWORD>", process.env.PASSWORD);
 
 mongoose.connect(DB, {}).then(() => console.log("DB connection successful!"));
 

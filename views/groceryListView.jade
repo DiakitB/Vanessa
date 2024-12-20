@@ -1,0 +1,46 @@
+extends layout
+
+block content
+   h1= totalRecipes + ' Recipes for the week. Here is your grocery list.'
+
+   // loop through the groceryList array and create a beautiful grocery list
+   ul
+      each item in groceryList
+          li 
+             span.quantity #{item.quantity} #{item.unit}
+             span.ingredient #{item.ingredient}
+   
+   style.
+      @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+      ul {
+         max-height: 20em; /* Adjust the height as needed */
+         overflow-y: auto;
+         list-style-type: none;
+         padding: 0;
+         margin: 0;
+         background-color: #ffe4e1; /* Light pink background */
+         border-radius: 8px;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         font-family: 'Pacifico', cursive; /* Cute font */
+      }
+      li {
+         padding: 1em;
+         border-bottom: 1px solid #ffb6c1; /* Light pink border */
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         text-transform: uppercase; /* Convert text to uppercase */
+         color: #ff69b4; /* Hot pink text */
+      }
+      li:last-child {
+         border-bottom: none;
+      }
+      .quantity {
+         font-weight: bold;
+         color: #ff69b4; /* Hot pink text */
+      }
+      .ingredient {
+         font-weight: bold;
+         color: #ff1493; /* Deep pink text */
+      }

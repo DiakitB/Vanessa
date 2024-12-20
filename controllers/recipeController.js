@@ -19,7 +19,7 @@ const multer = require('multer');
     }
  });
 
-console.log(storage);
+
 
 const upload = multer({ storage: storage });
 
@@ -41,7 +41,7 @@ exports.index = asyncHandler(async (req, res) => {
 // create a search function that takes a search query and return a list of recipes that title contains the search query
 exports.searchRecipe = asyncHandler(async (req, res) => {
   const search = req.query.search;
-  console.log(search);
+ 
   const recipes = await Recipe.find({ title: { $regex: search, $options: "i" } });
   if (!recipes) {
     res.send("no recipes found");
@@ -168,25 +168,23 @@ exports.vanessaRouter = asyncHandler(async (req, res) => {
 });
 
 exports.addRecipeToBookmarks = asyncHandler(async (req, res) => {
- console.log("add recipe to bookmarks");
+
   const recipe = await Recipe.findById(req.params.id);
- const bookmarks = await Bookmark.find();
-//  console.log(typeof bookmarks);
-//   console.log(bookmarks);
+  const bookmarks = await Bookmark.find();
   const [bookmark] = bookmarks;
-// check if the recipe is already in bookmark array if it is do not add it again and alert the user that the recipe is already in the bookmarks and redirect to /kitchen/recipe/:id
-  const found = bookmark.bookmarked.find((ele) => ele._id == req.params.id);
-  console.log(found);
-  if (found) {
-    req.flash('info', 'Flash Message Added');
-    res.redirect(`/kitchen/recipe/${req.params.id}`);
-    return;
+
+   // check if the recipe is already bookmarked
+  const isBookmarked = bookmark.bookmarked.find((bookmarked) => bookmarked._id == req.params.id);
+  if (isBookmarked) {
+    return res.json({ success: false, message: 'Recipe already bookmarked' });
   }
-  
   const bookMarkedRecipe = [...bookmark.bookmarked, recipe];
   bookmark.bookmarked = bookMarkedRecipe;
+  
   await bookmark.save();
   
- 
-  res.redirect(`/kitchen/recipe/${req.params.id}`);
+  res.json({ success: true, message: 'Recipe has been bookmarked successfully' });
 });
+// create a function that will take all the bookmarked recipes, group the ingredients by name and sum the quantity
+
+

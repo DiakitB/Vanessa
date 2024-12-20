@@ -11,8 +11,10 @@ block content
     button 
       a.gobackfile(href="/file/subfiles") Back to Files
 
-  div(style="text-align: right; font-weight: 700; color: white") Balance:  #{Number(file.totalAmount) -  Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0) )}
-
+  
+  .file-title 
+    p.title-text #{file.title}: PAYMENTS
+    h1  Balance: $#{Number(file.totalAmount) - Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0)) <= 0 ? 'You are done with your payments' : Number(file.totalAmount) - Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0))}
   table
     thead
       tr
@@ -25,9 +27,10 @@ block content
           td #{payment.payment}
   style.
     table {
-      width: 100%;
+      width: 50%;
       border-collapse: collapse;
       background-color: white;
+      margin: 0 auto;
     }
 
     th, td {
@@ -41,10 +44,11 @@ block content
     }
 
     form {
-      margin-top: 20px;
+      margin: 0 auto;
       display: flex;
       justify content: center;
       gap: 10px;
+      width: 50%;
     }
 
     div {
@@ -77,4 +81,55 @@ block content
       
     }
       
+    .file-title {
+      display: flex;
+      justify-content: space-between;
+      width: 50%;
+      margin: 5rem auto;
+    }
+    .title-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+    }
+      @media (max-width: 1200px) {
+        table, form, .file-title {
+        width: 70%;
+        }
+      }
+
+      @media (max-width: 992px) {
+        table, form, .file-title {
+        width: 80%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        table, form, .file-title {
+        width: 90%;
+        }
+
+        .title-text {
+        font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        table, form, .file-title {
+        width: 100%;
+        }
+
+        .title-text {
+        font-size: 1rem;
+        }
+
+        th, td {
+        padding: 5px;
+        }
+
+        button[type="submit"], .gobackfile {
+        padding: 8px 10px;
+        }
+      }
     

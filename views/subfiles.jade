@@ -1,13 +1,17 @@
 block content
 
   h1 Sub Files
-
-  .goback-button
-    a.btn.btn-primary(href='/file/family') Go Back
+  .btn-box
+    .goback-button
+      a.btn.btn-primary(href='/') Go Back
+    .goback-button
+      a.btn.btn-primary(href='/file/create') Create File
+    
   table.table.table-striped
     thead
       tr
         th File Name
+        th Last Payment Date
         th Last Payment Amount
         th Next Payment Date
         th Payment Frequency
@@ -16,16 +20,24 @@ block content
       each file, i in files
         tr
           td= file.title
+          td= file.payments.length > 0 ? file.payments[0].date : 'N/A'
           td= file.payments.length > 0 ? file.payments[0].payment : 'N/A'
           td= file.nextDate? file.nextDate : 'N/A'
+          
         
           td
             a.btn.btn-primary(href=`/file/subfiles/${file._id}`) View
            
 
   style.
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #004658;
+    }
     table {
-      width: 100%;
+      width: 50%;
+      margin: 0 auto;
+      background-color: white;
       
     }
     th, td {
@@ -39,14 +51,14 @@ block content
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
-    tr:hover {
-      background-color: #004658;
+    td:nth-child(2), td:nth-child(3) {
+      background-color: #e0e0e0;
     }
-  
+    td:hover {
+      background-color: #d4edda; /* Light green background on hover */
+    }
     a {
       text-decoration: none;
-      
-     
     }
     a:hover {
       color: black;
@@ -57,18 +69,79 @@ block content
       padding: 10px;
       width: 100px;
       text-align: center;
-      curser : pointer;
-      background-color : #f2f2f2;
+      cursor: pointer;
+      background-color: #f2f2f2;
     }
     .goback-button a {
       text-decoration: none;
-      
     }
     .goback-button a:hover {
       color: black;
-      
     }
-    h1{
+    h1 {
       text-align: center;
-      
+    }
+    .btn-box {
+      display: flex;
+      justify-content: space-between;
+      width: 50%;
+      margin: 5rem auto;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #ffffff;
+      background-color: #da6d97;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    @media (max-width: 1200px) {
+      table {
+      width: 70%;
+      }
+      .btn-box {
+      width: 70%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      table {
+      width: 80%;
+      }
+      .btn-box {
+      width: 80%;
+      flex-direction: column;
+      align-items: center;
+      }
+      .goback-button {
+      width: 80%;
+      margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      table {
+      width: 90%;
+      }
+      .btn-box {
+      width: 90%;
+      }
+      h1 {
+      font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      table {
+      width: 100%;
+      }
+      .btn-box {
+      width: 100%;
+      }
+      h1 {
+      font-size: 1.5rem;
+      }
+      .goback-button {
+      width: 100%;
+      }
     }

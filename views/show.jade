@@ -1,6 +1,5 @@
 extends layout 
 
-
 block content
  
   div.card8-container
@@ -20,7 +19,7 @@ block content
             li #{index + 1}. #{instruction}
       div.card8-actions
         a(href='/kitchen/all-recipes' class='interact') Back to Recipes
-        a(href=`/kitchen/cart/${recipe._id}` class='interact') Bookmark Recipe
+        a(href=`/kitchen/cart/${recipe._id}` class='interact' id='bookmark-link') Bookmark Recipe
         
       style.
         .card8-container {
@@ -91,18 +90,55 @@ block content
         .card8-actions .interact:hover {
           text-decoration: underline;
         }
-         @media (max-width: 600px) {
-          .card8 {
-            max-width: 100%;
-              margin: 0;
-              border-radius: 0
-          } 
-          .card8-container {
-              padding: 0;
-            }
+
+        .message {
+          position: fixed;
+          top: 10px;
+          right: 10px;
+          background: #28a745;
+          color: #fff;
+          padding: 10px;
+          border-radius: 5px;
+          display: none;
         }
 
+        .message.error {
+          background: #dc3545;
+        }
 
+        @media (max-width: 600px) {
+          .card8 {
+            max-width: 100%;
+            margin: 0;
+            border-radius: 0;
+          } 
+          .card8-container {
+            padding: 0;
+          }
+        }
 
+  div.message(id='bookmark-message') Recipe bookmarked successfully!
+  div.message.error(id='already-bookmarked-message') Recipe is already bookmarked!
 
-      
+  script.
+    document.getElementById('bookmark-link').addEventListener('click', function(event) {
+      event.preventDefault();
+      // Simulate checking if the recipe is already bookmarked
+      var isBookmarked = false; // Replace with actual check
+      if (isBookmarked) {
+        var alreadyBookmarkedMessage = document.getElementById('already-bookmarked-message');
+        alreadyBookmarkedMessage.style.display = 'block';
+        setTimeout(function() {
+          alreadyBookmarkedMessage.style.display = 'none';
+        }, 3000);
+      } else {
+        // Simulate bookmarking action
+        setTimeout(function() {
+          var message = document.getElementById('bookmark-message');
+          message.style.display = 'block';
+          setTimeout(function() {
+            message.style.display = 'none';
+          }, 3000);
+        }, 500);
+      }
+    });
