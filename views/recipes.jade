@@ -4,7 +4,7 @@ block content
   nav.navbar
     .logo
 
-    .menu-icon(onclick="toggleMenu()")
+    .menu-icon
       i.fas.fa-bars
     .menu
       a(href="/kitchen/all-recipes") Get Recipes
@@ -18,7 +18,7 @@ block content
       input(type="text", name="search", placeholder="Search for recipes")
       button(type="submit") Search
   .notification
-  script(src="scripts.js")
+  script(src="/js/scripts.js")
   .recipe-page
     .cardContainer
       each recipe in recipes
@@ -29,7 +29,7 @@ block content
             p.cardContent_box__title= recipe.title
           .cardBtn 
             a.cardBtn__link(href=recipe.url) View Recipe
-            a.cardBtn__link(href="javascript:void(0)" onclick=`bookmarkRecipe('${recipe._id}')`) Bookmark
+            a.cardBtn__link(href="#", data-id=recipe._id) Bookmark
   style.
     @font-face {
       font-family: "roboto";
@@ -267,6 +267,12 @@ block content
         width: 100%;
         margin: 0.5rem 0;
       }
+      .cardImage_box {
+        height: 300px; /* Increase the height for smaller screens */
+      }
+      .cardImage {
+        height: 100%;
+      }
     }
 
     @media (max-width: 576px) {
@@ -282,5 +288,11 @@ block content
       .cardContainer {
         flex-direction: column;
         align-items: center;
+      }
+      .cardImage_box {
+        height: 350px; /* Further increase the height for the smallest screens */
+      }
+      .cardImage {
+        height: 100%;
       }
     }

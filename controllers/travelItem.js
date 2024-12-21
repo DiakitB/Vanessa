@@ -3,9 +3,6 @@
 const asyncHandler = require('express-async-handler');
 const Travelitems = require('../models/travelitemModel');
 
-const testing = require("../scripts/compute");
-
-
 
 
 exports.getAllItems = asyncHandler(async (req, res) => {

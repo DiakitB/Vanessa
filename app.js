@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const testing = require("./scripts/compute");
+
 const indexRouter = require("./routes/index");
 const fileRouter = require("./routes/family");
 const travelRouter = require("./routes/travel"); // Import the travel router
@@ -55,7 +55,7 @@ app.use("/file", fileRouter);
 app.use("/kitchen", kitchenRouter); // Use the kitchen router for requests to the /kitchen path
 app.use("/travel", travelRouter); // Use the travel router for requests to the /travel path
 app.use("/recipes", bookmaksRouter);
-app.locals.testing = testing.testing;
+
 
 
 
