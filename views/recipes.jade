@@ -18,38 +18,7 @@ block content
       input(type="text", name="search", placeholder="Search for recipes")
       button(type="submit") Search
   .notification
-  script.
-    function toggleMenu() {
-      const menu = document.querySelector('.navbar .menu');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    }
-
-    function bookmarkRecipe(recipeId) {
-      // Simulate a bookmark action
-      fetch(`/kitchen/cart/${recipeId}`, { method: 'GET' })
-      .then(response => response.json())
-      .then(data => {
-        if (data.bookmarked) {
-        showNotification('Recipe already bookmarked.');
-        } else if (data.success) {
-        showNotification('Recipe bookmarked successfully!');
-        } else {
-        showNotification('Recipe already bookmarked.');
-        }
-      })
-      .catch(error => {
-        showNotification('An error occurred.');
-      });
-    }
-
-    function showNotification(message) {
-      const notification = document.querySelector('.notification');
-      notification.textContent = message;
-      notification.style.display = 'block';
-      setTimeout(() => {
-        notification.style.display = 'none';
-      }, 3000);
-    }
+  script(src="scripts.js")
   .recipe-page
     .cardContainer
       each recipe in recipes
@@ -93,6 +62,11 @@ block content
     .navbar .menu {
       display: flex;
       gap: 1rem;
+    }
+    .navbar .menu.open {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     .navbar .menu a {
       color: #fff;
@@ -270,6 +244,9 @@ block content
     }
 
     @media (max-width: 768px) {
+      .cardContainer {
+        grid-template-columns: 1fr;
+      }
       .cardContainer__body {
         width: 100%;
       }
