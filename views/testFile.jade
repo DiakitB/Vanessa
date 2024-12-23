@@ -1,2 +1,67 @@
-style.
-   
+Request Body: [Object: null prototype] {
+  title: 'fqasa',
+  instructions: [
+    'Gather ingredients. Preheat the oven to 350 degrees F (175 degrees C).'
+  ],
+  servings: '2',
+  ingredients: [ 'russet potatoes' ],
+  units: [ '2 pounds' ]
+}
+Uploaded File: {
+  fieldname: 'image',
+  originalname: 'air-bag.jpg',
+  encoding: '7bit',
+  mimetype: 'image/jpeg',
+  size: 38441,
+  bucket: 'vanessamarcus',
+  key: '1734851086244-air-bag.jpg',
+  acl: 'private',
+  contentType: 'application/octet-stream',
+  contentDisposition: null,
+  contentEncoding: null,
+  storageClass: 'STANDARD',
+  serverSideEncryption: null,
+  metadata: undefined,
+  location: 'https://vanessamarcus.s3.us-east-2.amazonaws.com/1734851086244-air-bag.jpg',
+  etag: '"cba4ad4f59afb4d06cd0eae412b38916"',
+  versionId: undefined
+}
+Validation Errors: [
+  {
+    type: 'field',
+    value: '',
+    msg: 'Name is required',
+    path: 'title',
+    location: 'body'
+  },
+  {
+    type: 'field',
+    value: '',
+    msg: 'Image is required',
+    path: 'image',
+    location: 'body'
+  },
+  {
+    type: 'field',
+    value: undefined,
+    msg: 'Ingredients are required',
+    path: 'ingredients',
+    location: 'body'
+  },
+  {
+    type: 'field',
+    value: undefined,
+    msg: 'Instructions are required',
+    path: 'instructions',
+    location: 'body'
+  },
+  {
+    type: 'field',
+    value: '',
+    msg: 'Servings are required',
+    path: 'servings',
+    location: 'body'
+  }
+]
+POST /kitchen/create 400 433.337 ms - 459
+
