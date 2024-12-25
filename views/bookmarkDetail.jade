@@ -6,7 +6,7 @@ block content
   div.card8-container
     div.card8
       div.card8-image
-        img(src=`/data/uploads/${recipe.image}` alt="")
+        img(src=recipe.image, alt=recipe.title)
       div.card8-content
         h1= recipe.title
         p= recipe.description
