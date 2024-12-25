@@ -1,18 +1,18 @@
 extends layout 
 
 block content
- 
+
   div.card8-container
     div.card8
       div.card8-image
-        img(src=`/data/uploads/${recipe.image}` alt="")
+        img(src=recipe.image, alt=recipe.title)
       div.card8-content
         h1= recipe.title
         p= recipe.description
         h3 Ingredients
         ul
           each ingredient, index in recipe.ingredients
-            li  #{ingredient.unit} #{ingredient.ingredient}
+            li #{ingredient.unit} #{ingredient.ingredient}
         h3 Instructions
         ol
           each instruction, index in recipe.instructions
@@ -20,126 +20,9 @@ block content
       div.card8-actions
         a(href='/kitchen/all-recipes' class='interact') Back to Recipes
         a(href=`/kitchen/cart/${recipe._id}` class='interact' id='bookmark-link') Bookmark Recipe
-        
-      style.
-        .card8-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-        }
-
-        .card8 {
-          background: #fff;
-          border-radius: 10px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          overflow: hidden;
-          max-width: 600px;
-          width: 100%;
-          margin: 20px;
-        }
-
-        .card8-image img {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
-
-        .card8-content {
-          padding: 20px;
-          
-        }
-
-        .card8-content h1 {
-          font-size: 24px;
-          margin-bottom: 10px;
-        }
-
-        .card8-content p {
-          font-size: 16px;
-          color: #666;
-          margin-bottom: 20px;
-        }
-
-        .card8-content h3 {
-          font-size: 20px;
-          margin-bottom: 10px;
-        }
-
-        .card8-content ul, .card8-content ol {
-          padding-left: 20px;
-          margin-bottom: 20px;
-        }
-
-        .card8-content li {
-          margin-bottom: 5px;
-        }
-
-        .card8-actions {
-          display: flex;
-          justify-content: space-between;
-          padding: 20px;
-          border-top: 1px solid #eee;
-        }
-
-        .card8-actions .interact {
-          text-decoration: none;
-          color: #007BFF;
-          font-weight: bold;
-        }
-
-        .card8-actions .interact:hover {
-          text-decoration: underline;
-        }
-
-        .message {
-          position: fixed;
-          top: 10px;
-          right: 10px;
-          background: #28a745;
-          color: #fff;
-          padding: 10px;
-          border-radius: 5px;
-          display: none;
-        }
-
-        .message.error {
-          background: #dc3545;
-        }
-
-        @media (max-width: 600px) {
-          .card8 {
-            max-width: 100%;
-            margin: 0;
-            border-radius: 0;
-          } 
-          .card8-container {
-            padding: 0;
-          }
-        }
 
   div.message(id='bookmark-message') Recipe bookmarked successfully!
   div.message.error(id='already-bookmarked-message') Recipe is already bookmarked!
 
-  script.
-    document.getElementById('bookmark-link').addEventListener('click', function(event) {
-      event.preventDefault();
-      // Simulate checking if the recipe is already bookmarked
-      var isBookmarked = false; // Replace with actual check
-      if (isBookmarked) {
-        var alreadyBookmarkedMessage = document.getElementById('already-bookmarked-message');
-        alreadyBookmarkedMessage.style.display = 'block';
-        setTimeout(function() {
-          alreadyBookmarkedMessage.style.display = 'none';
-        }, 3000);
-      } else {
-        // Simulate bookmarking action
-        setTimeout(function() {
-          var message = document.getElementById('bookmark-message');
-          message.style.display = 'block';
-          setTimeout(function() {
-            message.style.display = 'none';
-          }, 3000);
-        }, 500);
-      }
-    });
+  link(rel='stylesheet', href='/stylesheets/show.css')
+  script(src='/js/show.js')

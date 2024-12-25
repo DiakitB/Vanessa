@@ -1,0 +1,94 @@
+.card8-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .card8 {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 600px;
+    width: 100%;
+    margin: 20px;
+  }
+  
+  .card8-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .card8-content {
+    padding: 20px;
+  }
+  
+  .card8-content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .card8-content p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .card8-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .card8-content ul, .card8-content ol {
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .card8-content li {
+    margin-bottom: 5px;
+  }
+  
+  .card8-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid #eee;
+  }
+  
+  .card8-actions .interact {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+  }
+  
+  .card8-actions .interact:hover {
+    text-decoration: underline;
+  }
+  
+  .message {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #28a745;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+  }
+  
+  .message.error {
+    background: #dc3545;
+  }
+  
+  @media (max-width: 600px) {
+    .card8 {
+      max-width: 100%;
+      margin: 0;
+      border-radius: 0;
+    } 
+    .card8-container {
+      padding: 0;
+    }
+  }
