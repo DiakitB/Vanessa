@@ -14,7 +14,8 @@ block content
       div#instruction
         div.instruction
           input(type='text' name='instructions[]' placeholder='Instruction' required)
-    button(type='button' id='add-instruction') Add Instruction
+    div.form-group
+      button(type='button' id='add-instruction') Add Instruction
 
     div.form-group
       label(for='servings') Recipe Serving:
@@ -25,72 +26,14 @@ block content
         div.ingredient
           input(type='text' name='ingredients[]' placeholder='Ingredient' required)
           input(type='text' name='units[]' placeholder='Unit' required)
-    button(type='button' id='add-ingredient') Add Ingredient
+    div.form-group
+      button(type='button' id='add-ingredient') Add Ingredient
 
-    div.sub-btn
+    div.form-group
       button(type='submit') Submit
 
-    .goback-btn
+    div.form-group.goback-btn
       a(href='/kitchen/all-recipes') Go Back
   script(src='/js/recipeform.js')
-  style.
-    form {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background-color: #f9f9f9;
-    }
-  
-    .form-group {
-      margin-bottom: 15px;
-    }
-  
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-  
-    input[type="text"],
-    input[type="number"],
-    input[type="file"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-  
-    button[type="button"],
-    button[type="submit"] {
-      display: inline-block;
-      padding: 10px 20px;
-      margin-top: 10px;
-      margin-left: 10px;
-      border: none;
-      border-radius: 5px;
-      background-color: #28a745;
-      color: white;
-      cursor: pointer;
-    }
-  
-    button[type="button"]:hover,
-    button[type="submit"]:hover {
-      background-color: #218838;
-    }
-  
-    .instruction,
-    .ingredient {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-  
-    .instruction input,
-    .ingredient input {
-      flex: 1;
-    }
-    .sub-btn {
-      background-color: red;
-    }
+  link(rel='stylesheet' href='/stylesheets/recipeform.css')
+   
