@@ -2,15 +2,15 @@ extends layout
 
 block content
   nav.navbar
-    .logo
-
-    .menu-icon
-      i.fas.fa-bars
-    .menu
-      a(href="/kitchen/all-recipes") Get Recipes
-      a(href="/kitchen/create") Add Recipe
-      a(href="/recipes/bookmarks") Bookmarked
-      a(href="/recipes/groceryList") Grocery List
+    .navbar-container
+      .logo
+        img(src="/data/uploads/vanessa.jpg", alt="Vanessa")
+      .menu-icon
+        i.fas.fa-bars
+      .menu
+        a(href="/kitchen/create") Add Recipe
+        a(href="/recipes/bookmarks") Bookmarked
+        a(href="/recipes/groceryList") Grocery List
   .main-section 
     h1.h1 Welcome to Recipe Finder
   
@@ -32,4 +32,3 @@ block content
           .cardBtn 
             a.cardBtn__link(href=recipe.url) View Recipe
             a.cardBtn__link(href="#", data-id=recipe._id) Bookmark
-  

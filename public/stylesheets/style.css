@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "Playfair Display";
   src: url("../fonts/PlayfairDisplay-Regular.ttf");
 }
@@ -78,11 +78,10 @@
 body {
   font-family: 'Playfair Display', sans-serif;
   background-color: var(--light-Blue-2);
-}
+} */
 
 
-
-
+/* 
 
 
 .button {
@@ -300,7 +299,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 20px;
-}
+} */
 
 
 .container-idex {

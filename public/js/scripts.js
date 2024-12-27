@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize AOS
+  AOS.init({
+    duration: 1200, // Animation duration
+    once: false, // Whether animation should happen only once - while scrolling down
+    mirror: true // Whether elements should animate out while scrolling past them
+  });
+
   // Toggle menu
   const menuIcon = document.querySelector('.menu-icon');
   if (menuIcon) {

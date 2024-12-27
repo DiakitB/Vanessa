@@ -1,4 +1,3 @@
-
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -18,8 +17,6 @@ const bookmarksRouter = require("./routes/bookmark");
 
 const app = express();
 
-
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
@@ -33,15 +30,14 @@ app.use(session({
 
 // Setup flash middleware
 app.use(flash());
-app.use(flash());
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "https://example.com"],
-      imgSrc: ["'self'", "data:", "https://vanessamarcus.s3.us-east-2.amazonaws.com"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://third-party-css.com", "https://cdnjs.cloudflare.com"],
-      fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
+      scriptSrc: ["'self'", "https://example.com", "https://cdn.jsdelivr.net", "'unsafe-inline'"],
+      imgSrc: ["'self'", "https://vanessamarcus.s3.us-east-2.amazonaws.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://third-party-css.com", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net"],
+      fontSrc: ["'self'", "data:", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
       // Add other directives as needed
     },
   },
@@ -81,7 +77,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-
-
-
-

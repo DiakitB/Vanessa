@@ -2,16 +2,26 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet", href="/stylesheets/style.css")
-   
+    meta(http-equiv="Content-Security-Policy", content="default-src 'self'; style-src 'self' 'unsafe-inline' https://third-party-css.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; script-src 'self' https://example.com https://cdn.jsdelivr.net 'unsafe-inline'; img-src 'self' https://vanessamarcus.s3.us-east-2.amazonaws.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com;")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap")
+    link(rel="stylesheet", href="/stylesheets/style.css")
     style.
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #004658;
+      }
       .logo-wrapper {
         position: relative;
         display: inline-block;
         margin-top: 1rem;
       }
+      
       .logo-wrapper img {
         width: 100%;
         height: auto;
@@ -27,6 +37,30 @@ html(lang="en")
         font-weight: bold;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+      }
+      .nav ul {
+        display: flex;
+        list-style: none;
+      }
+      .nav ul li {
+        margin-right: 1rem;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.5rem;
+        color: #ff69b4; // Hot pink color
+        transition: color 0.3s ease;
+      }
+      .nav ul li a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .nav ul li:hover {
+        color: #ff1493; // Deep pink color
+      }
       @media (max-width: 768px) {
         .logo-text {
           font-size: 1.5rem;
@@ -37,13 +71,16 @@ html(lang="en")
           font-size: 1rem;
         }
       }
-  body 
- 
+
+  body
+    script(src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js")
+    script.
+      AOS.init();
     script(src="/js/scripts.js")
     header
-      .container 
+      .container
         .nav
-          .logo-wrapper.center 
+          .logo-wrapper.center
             img(src="/data/uploads/filling-cabinet.png")
             .logo-text CABINET
           ul.lists

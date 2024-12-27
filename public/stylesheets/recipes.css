@@ -1,61 +1,42 @@
 /* styles.css */
-@font-face {
-  font-family: "Playfair Display";
-  src: url("../fonts/PlayfairDisplay-Regular.ttf");
+
+:root {
+  --dark-pink: #ba4270;
+  --water-white: #fbfcfe;
+  --blue-color: #36536b;
+  --dark-Blue: #1b262f;
+  --light-Pink: #da6d97;
+  --light-Gray: #6c8294;
+  --light-Blue: #e1eff3;
+  --light-Blue-2: #004658;
+  --background-page: #22ddce;
+  --pink: #ee5867;
+  --pink-light: #fff0f0;
+  --pink-dark: #ec3a50;
+  --headlinesFont: 'Josefin Sans', sans-serif;
+  --bodyFont: 'Work Sans', sans-serif;
+  --wildWatermelon: #ff4f87;
+  --fuelYellow: #f0a035;
+  --textColor: #323232;
+  --bodyBg: #d6d6d6;
+  --white: #fff;
+  --black: #000;
+  --bgc-bullet: #F2994A;
+  --font-main: 'Montserrat', sans-serif;
+  --font-head: 'IBM Plex Serif', serif;
+  --bgc-checkbox: #760c1c;
+  --cornsilk: cornsilk;
+  --clr-primary: #d50000;
+  --clr-primary-hover: #29e6a7;
+  --clr-primary-dark: #039d69;
+  --clr-gray100: #f0f7f8;
+  --clr-gray200: #cfd8dc;
+  --clr-gray300: #a7b7be;
+  --clr-gray400: #6b7e86;
+  --clr-gray500: #425a65;
+  --radius: 0.2rem;
 }
-body {
-  font-family: 'Playfair Display', serif;
-  background-color: #004658;
-  margin: 0;
-  padding: 0;
-}
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #343a40;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-.navbar .logo {
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.navbar .menu-icon {
-  display: none;
-  cursor: pointer;
-}
-.navbar .menu {
-  display: flex;
-  gap: 1rem;
-}
-.navbar .menu.open {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.navbar .menu a {
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  font-family: 'playfair display', serif;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-.navbar .menu a:hover {
-  background-color: #495057;
-}
-.main-section {
-  text-align: center;
-  padding: 2rem;
-}
-.main-section p {
-  font-size: 1.2rem;
-  color: #6c757d;
-}
+
 .formGroup {
   display: flex;
   justify-content: center;
@@ -193,7 +174,16 @@ h1 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
+.cardImage {
+  transition: transform 0.5s ease-in-out;
+  transform: scale(0.9);
+  opacity: 0;
+}
 
+.cardImage.visible {
+  transform: scale(1);
+  opacity: 1;
+}
 /* Media queries */
 @media (max-width: 1200px) {
   .cardContainer {
@@ -201,12 +191,6 @@ h1 {
   }
 }
 @media (max-width: 992px) {
-  .navbar .menu {
-    display: none;
-  }
-  .navbar .menu-icon {
-    display: block;
-  }
   .cardContainer {
     justify-content: center;
   }
@@ -249,12 +233,6 @@ h1 {
   }
 }
 @media (max-width: 576px) {
-  .navbar {
-    flex-direction: column;
-  }
-  .navbar .logo {
-    margin-bottom: 1rem;
-  }
   .main-section {
     padding: 1rem;
   }
@@ -274,5 +252,92 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+/* Navigation Bar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+ 
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 50px;
+  width: auto;
+  border-radius: 50%;
+  
+}
+
+.menu-icon {
+  display: none;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.menu a:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.menu a:active {
+  background-color: #004085;
+  border-color: #004085;
+}
+
+.menu a:visited {
+  color: #fff;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .menu.open {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
   }
 }

@@ -1,21 +1,37 @@
+
 extends layout
 
 block content
+  nav.navbar
+    .navbar-container
+      .logo
+        img(src="/data/uploads/vanessa.jpg", alt="Vanessa")
+      .menu-icon
+        i.fas.fa-bars
+      .menu
+        a(href="/kitchen/all-recipes") Recipes
+        a(href="/recipes/groceryList") Grocery List
+  .main-section 
+    h1.h1 Welcome to Recipe Finder
+  
+    form.formGroup(action="/kitchen/search", method="GET")
+      input(type="text", name="search", placeholder="Search for recipes")
+      button(type="submit") Search
+  .notification
+  link(rel="stylesheet", href="/stylesheets/recipes.css")
+  
+  script(src="/js/scripts.js")
   .recipe-page
-    button.recipePage-btn 
-      a.recipePage-btn__link(href='/kitchen/all-recipes') Recipe Finder
     .cardContainer
       each recipe in recipes
-        .cardContainer__body
+        .cardContainer__body(data-aos="fade-up")
           .cardImage_box 
             img.cardImage(src=recipe.image, alt=recipe.title)
           .cardContent_box
             p.cardContent_box__title= recipe.title
           .cardBtn 
             a.cardBtn__link(href=`/recipes/bookmarks/${recipe._id}`) View Recipe
-            a.cardBtn__link3(href=`/recipes/deleted/${recipe._id}`) Delete Recipe
-  link(rel="stylesheet", href="/stylesheets/recipes.css")
-    
-          
+            a.cardBtn__link(href=`/recipes/deleted/${recipe._id}`, data-id=recipe._id) Delete Recipe
+        
 
           
