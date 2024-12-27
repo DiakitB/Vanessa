@@ -36,7 +36,7 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "https://example.com", "https://cdn.jsdelivr.net", "'unsafe-inline'"],
       imgSrc: ["'self'", "https://vanessamarcus.s3.us-east-2.amazonaws.com"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://third-party-css.com", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://third-party-css.com", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "data:", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
       // Add other directives as needed
     },
