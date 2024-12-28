@@ -1,54 +1,29 @@
 extends layout
-
 block content
-  
   link(rel="stylesheet", href="/stylesheets/index.css")
-  .index-box
-    .container-idex
-      a.button(href="/file/subfiles")
-        .plate
-        .plate
-        .plate
-        .plate
-        .plate
-        .button__wrapper
-          span.button__text FILES
-        .button__box
-          .inner.inner__top
-          .inner.inner__front
-          .inner.inner__bottom
-          .inner.inner__back
-          .inner.inner__left
-          .inner.inner__right
-    .container-idex
-      a.button(href="/travel/items")
-        .plate
-        .plate
-        .plate
-        .plate
-        .plate
-        .button__wrapper
-          span.button__text TRAVEL
-        .button__box
-          .inner.inner__top
-          .inner.inner__front
-          .inner.inner__bottom
-          .inner.inner__back
-          .inner.inner__left
-          .inner.inner__right
-    .container-idex
-      a.button(href="/kitchen/all-recipes")
-        .plate
-        .plate
-        .plate
-        .plate
-        .plate
-        .button__wrapper
-          span.button__text RECIPES
-        .button__box
-          .inner.inner__top
-          .inner.inner__front
-          .inner.inner__bottom
-          .inner.inner__back
-          .inner.inner__left
-          .inner.inner__right
+  script(src="/js/index.js")
+  .intro
+    p.animated(data-aos="fade-up") Welcome to our app!
+    p.animated(data-aos="fade-up" data-aos-delay="500") Organize your files, plan your trips, and discover new recipes.
+  .landing-page
+    .container.files(data-aos="fade-up" data-aos-delay="1000")
+      a.card(href="/file/subfiles")
+        .card-content
+          .card-icon
+            i.fas.fa-folder
+          .card-title FILES
+          .card-description Organize your files
+    .container.travel(data-aos="fade-up" data-aos-delay="1500")
+      a.card(href="/travel/items")
+        .card-content
+          .card-icon
+            i.fas.fa-plane
+          .card-title TRAVEL
+          .card-description Plan your trips
+    .container.recipes(data-aos="fade-up" data-aos-delay="2000")
+      a.card(href="/kitchen/all-recipes")
+        .card-content
+          .card-icon
+            i.fas.fa-utensils
+          .card-title RECIPES
+          .card-description Discover new recipes
