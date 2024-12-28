@@ -336,7 +336,9 @@ h1 {
     flex-direction: column;
     gap: 10px;
   }
-
+  .menu-icon i.fas.fa-bars {
+    font-size: 1.5rem; /* Adjust the size as needed */
+  }
   .menu.open {
     display: flex;
   }
@@ -345,3 +347,4 @@ h1 {
     display: block;
   }
 }
+
