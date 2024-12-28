@@ -1,8 +1,6 @@
 extends layout 
 
-
 block content
- 
   div.card8-container
     div.card8
       div.card8-image
@@ -13,20 +11,21 @@ block content
         h3 Ingredients
         ul
           each ingredient, index in recipe.ingredients
-            li  #{ingredient.unit} #{ingredient.ingredient}
+            li #{ingredient.unit} #{ingredient.ingredient}
         h3 Instructions
         ol
           each instruction, index in recipe.instructions
             li #{index + 1}. #{instruction}
       div.card8-actions
         a(href='/recipes/bookmarks' class='interact') Back to Recipes
-       
+
       style.
         .card8-container {
           display: flex;
           justify-content: center;
           align-items: center;
           padding: 20px;
+          overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
         .card8 {
@@ -90,13 +89,14 @@ block content
         .card8-actions .interact:hover {
           text-decoration: underline;
         }
-          @media (max-width: 600px) {
+
+        @media (max-width: 600px) {
           .card8 {
             max-width: 100%;
-              margin: 0;
-              border-radius: 0
-          } 
+            margin: 0;
+            border-radius: 0;
+          }
           .card8-container {
-              padding: 0;
-            }
+            padding: 0;
+          }
         }

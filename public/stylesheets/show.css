@@ -1,115 +1,126 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #004658;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 .card8-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.card8 {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 600px;
+  width: 100%;
+  margin: 20px;
+}
+
+.card8-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card8-content {
+  padding: 20px;
+}
+
+.card8-content h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card8-content p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.card8-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card8-content ul, .card8-content ol {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.card8-content li {
+  margin-bottom: 5px;
+}
+
+.card8-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+.card8-actions a {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card8-actions a:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.card8-actions .interact {
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.card8-actions .interact:hover {
+  color: #c71585;
+  text-decoration: underline;
+}
+
+.message {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #28a745;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+.message.error {
+  background: #dc3545;
+}
+
+@media (max-width: 600px) {
   .card8 {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-width: 600px;
-    width: 100%;
-    margin: 20px;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
   }
-  
-  .card8-image img {
-    width: 100%;
-    height: auto;
-    display: block;
+  .card8-container {
+    padding: 0;
   }
-  
-  .card8-content {
-    padding: 20px;
-  }
-  
-  .card8-content h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .card8-content p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .card8-content h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .card8-content ul, .card8-content ol {
-    padding-left: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .card8-content li {
-    margin-bottom: 5px;
-  }
-  
-  .card8-actions {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    border-top: 1px solid #eee;
-  }
-  .card8-actions a {
-    padding: 0.75rem 1.5rem;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .card8-actions a:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-  }
-
-  .card8-actions .interact {
-    text-decoration: none;
-  
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-
-  .card8-actions .interact:hover {
-    color: #c71585;
-  }
-  
-  .card8-actions .interact:hover {
-    text-decoration: underline;
-  }
-  
-  .message {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: #28a745;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    display: none;
-  }
-  
-  .message.error {
-    background: #dc3545;
-  }
-  
-  @media (max-width: 600px) {
-    .card8 {
-      max-width: 100%;
-      margin: 0;
-      border-radius: 0;
-    } 
-    .card8-container {
-      padding: 0;
-    }
-  }
+}

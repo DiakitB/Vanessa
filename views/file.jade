@@ -1,20 +1,15 @@
-  
- 
-
 extends layout 
 
 block content
-  form( method="post")
+  form(method="post")
     label(for="payment") Payment:
     input(type="number", name="payment", required id="payment")
-    button(type="submit", value="Submit") Make Payment
-    button 
-      a.gobackfile(href="/file/subfiles") Back to Files
+    button(type="submit") Make Payment
+    a.gobackfile(href="/file/subfiles") Back to Files
 
-  
   .file-title 
     p.title-text #{file.title}: PAYMENTS
-    h1  Balance: $#{Number(file.totalAmount) - Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0)) <= 0 ? 'You are done with your payments' : Number(file.totalAmount) - Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0))}
+    h1 Balance: $#{Number(file.totalAmount) - Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0)) <= 0 ? 'You are done with your payments' : Number(file.totalAmount) - Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0))}
   table
     thead
       tr
@@ -27,7 +22,7 @@ block content
           td #{payment.payment}
   style.
     table {
-      width: 50%;
+      width: 100%;
       border-collapse: collapse;
       background-color: white;
       margin: 0 auto;
@@ -46,13 +41,11 @@ block content
     form {
       margin: 0 auto;
       display: flex;
-      justify content: center;
+      flex-direction: column;
+      align-items: center;
       gap: 10px;
-      width: 50%;
-    }
-
-    div {
-      margin-bottom: 10px;
+      width: 100%;
+      max-width: 600px;
     }
 
     label {
@@ -60,76 +53,55 @@ block content
       width: 100px;
     }
 
-    input[type="text"] {
+    input[type="number"] {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
 
-    button[type="submit"] {
+    button[type="submit"], .gobackfile {
       padding: 10px 20px;
       border: none;
       border-radius: 5px;
       background-color: #28a745;
       color: white;
+      text-decoration: none;
+      text-align: center;
     }
-    .gobackfile {
-     padding: 12px 10px;
-      border: none;
-      border-radius: 5px;
-      
-    }
-      
+
     .file-title {
       display: flex;
-      justify-content: space-between;
-      width: 50%;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
       margin: 5rem auto;
     }
+
     .title-text {
       font-size: 1.5rem;
       font-weight: bold;
       color: white;
       text-align: center;
     }
-      @media (max-width: 1200px) {
-        table, form, .file-title {
-        width: 70%;
-        }
-      }
 
-      @media (max-width: 992px) {
-        table, form, .file-title {
-        width: 80%;
-        }
-      }
-
-      @media (max-width: 768px) {
-        table, form, .file-title {
-        width: 90%;
-        }
-
-        .title-text {
+    @media (max-width: 768px) {
+      .title-text {
         font-size: 1.2rem;
-        }
       }
+    }
 
-      @media (max-width: 576px) {
-        table, form, .file-title {
-        width: 100%;
-        }
-
-        .title-text {
-        font-size: 1rem;
-        }
-
-        th, td {
+    @media (max-width: 576px) {
+      th, td {
         padding: 5px;
-        }
-
-        button[type="submit"], .gobackfile {
-        padding: 8px 10px;
-        }
       }
-    
+
+      button[type="submit"], .gobackfile {
+        padding: 8px 10px;
+      }
+
+      .title-text {
+        font-size: 1rem;
+      }
+    }

@@ -4,7 +4,6 @@ block content
    .message-box
       h3= `You have ${totalRecipes} recipes planned for the week. Here is your grocery list:`
 
- 
    ul
       each item, index in groceryList
           li 
@@ -12,12 +11,12 @@ block content
              span.details
                 span.quantity #{item.quantity} #{item.unit}
                 span.ingredient #{item.ingredient}
-   
+
    style.
       @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
       .message-box {
-         background-color: #f9f9f9; /* Light grey background */
+         background-color: #f9f9f9;
          border-radius: 8px;
          padding: 1em;
          margin-bottom: 1em;
@@ -27,22 +26,24 @@ block content
       h3 {
          font-family: 'Roboto', sans-serif;
          font-weight: 700;
-         color: #333; /* Dark grey text */
+         color: #333;
       }
       ul {
-         max-height: 20em; /* Adjust the height as needed */
+         max-height: 20em;
          overflow-y: auto;
          list-style-type: none;
          padding: 0;
          margin: 0;
-         background-color: #f9f9f9; /* Light grey background */
+         background-color: #f9f9f9;
          border-radius: 8px;
          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-         font-family: 'Roboto', sans-serif; /* Modern font */
+         font-family: 'Roboto', sans-serif;
+         width: 100%;
+         overflow-x: hidden; /* Prevent horizontal scrolling */
       }
       li {
          padding: 1em;
-         border-bottom: 1px solid #e0e0e0; /* Light grey border */
+         border-bottom: 1px solid #e0e0e0;
          display: flex;
          align-items: center;
          background-color: white;
@@ -50,6 +51,8 @@ block content
          margin: 0.5em 0;
          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
          transition: transform 0.2s;
+         width: 100%;
+         box-sizing: border-box; /* Ensure padding and border are included in the width */
       }
       li:hover {
          transform: scale(1.02);
@@ -60,7 +63,7 @@ block content
       .index {
          margin-right: 1em;
          font-weight: bold;
-         color: #333; /* Dark grey text */
+         color: #333;
       }
       .details {
          display: flex;
@@ -68,9 +71,9 @@ block content
       }
       .quantity {
          font-weight: bold;
-         color: #333; /* Dark grey text */
+         color: #333;
       }
       .ingredient {
          font-weight: 700;
-         color: #555; /* Medium grey text */
+         color: #555;
       }

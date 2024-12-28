@@ -1,32 +1,23 @@
-
-
-
 extends layout
 
 block content 
   h1 Add a New File
-  form(method='post' )
+  form(method='post')
     div.form-group
       label(for='title') File Name
       input(type='text' placeholder="File name" name='title' id='title' required)
-  
-
     div.form-group
       label(for='totalAmount') Total Amount:
-      input(type='number' name='totalAmount' id='totalAmount' placeholder="THIS IS OPTIONAL IF YOU DON'T  WANT AN AMOUNT SIMPLY PUT 0")
+      input(type='number' name='totalAmount' id='totalAmount' placeholder="THIS IS OPTIONAL IF YOU DON'T WANT AN AMOUNT SIMPLY PUT 0")
     div.form-group
       label(for='paymentFrequency') Payment Frequency:
       select(name='paymentFrequency' id='paymentFrequency')
         each frequency in paymentFrequency
-          
-          option(value=frequency ) #{frequency}
+          option(value=frequency) #{frequency}
+    div.sub-btn
+      button(type='submit' value="Create File") Submit
 
-    
-      div.sub-btn
-        button(type='submit' value="Create File") Submit
-    
-  
-  style. 
+  style.
     form {
       max-width: 600px;
       margin: 0 auto;
@@ -34,68 +25,48 @@ block content
       border: 1px solid #ccc;
       border-radius: 10px;
       background-color: #f9f9f9;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
     }
-  
+
     .form-group {
       margin-bottom: 15px;
     }
-  
+
     label {
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
     }
-  
+
     input[type="text"],
-    input[type="number"],
-    input[type="file"] {
+    input[type="number"] {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-  
-    button[type="button"],
+
     button[type="submit"] {
       display: inline-block;
       padding: 10px 20px;
       margin-top: 10px;
-      margin-left: 10px;
       border: none;
       border-radius: 5px;
       background-color: #28a745;
       color: white;
       cursor: pointer;
     }
-  
-    button[type="button"]:hover,
+
     button[type="submit"]:hover {
       background-color: #218838;
     }
-  
-    
-  
-    .instruction,
-    .ingredient {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-  
-    .instruction input,
-    .ingredient input {
-      flex: 1;
-    }
-     h1 {
+
+    h1 {
       text-align: center;
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      color: white ;
+      color: white;
     }
-
-
-
-
 
 
 

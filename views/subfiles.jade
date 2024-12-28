@@ -45,9 +45,12 @@ block content
     body {
       font-family: Arial, sans-serif;
       background-color: #004658;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
     }
     table {
-      width: 80%;
+      width: 100%;
       margin: 0 auto;
       background-color: white;
       border-collapse: collapse;
@@ -63,9 +66,6 @@ block content
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
-    td:nth-child(2), td:nth-child(3) {
-      background-color: #e0e0e0;
-    }
     td:hover {
       background-color: #d4edda; /* Light green background on hover */
     }
@@ -79,16 +79,9 @@ block content
       margin-bottom: 20px;
       border: 1px solid black;
       padding: 10px;
-      width: 100px;
       text-align: center;
       cursor: pointer;
       background-color: #f2f2f2;
-    }
-    .goback-button a {
-      text-decoration: none;
-    }
-    .goback-button a:hover {
-      color: black;
     }
     h1 {
       text-align: center;
@@ -102,44 +95,18 @@ block content
     .btn-box {
       display: flex;
       justify-content: space-between;
-      width: 50%;
+      width: 100%;
+      max-width: 600px;
       margin: 5rem auto;
     }
-    @media (max-width: 1200px) {
-      table {
-        width: 70%;
-      }
+    @media (max-width: 768px) {
       .btn-box {
-        width: 70%;
-      }
-    }
-    @media (max-width: 992px) {
-      table {
-        width: 80%;
-      }
-      .btn-box {
-        width: 80%;
         flex-direction: column;
         align-items: center;
       }
       .goback-button {
-        width: 80%;
+        width: 100%;
         margin-bottom: 10px;
-      }
-      th, td {
-        font-size: 1.2rem;
-        padding: 10px;
-      }
-    }
-    @media (max-width: 768px) {
-      table {
-        width: 85%;
-      }
-      .btn-box {
-        width: 85%;
-      }
-      h1 {
-        font-size: 2rem;
       }
       th, td {
         font-size: 1.1rem;
@@ -147,17 +114,8 @@ block content
       }
     }
     @media (max-width: 576px) {
-      table {
-        width: 95%;
-      }
-      .btn-box {
-        width: 95%;
-      }
       h1 {
         font-size: 1.5rem;
-      }
-      .goback-button {
-        width: 95%;
       }
       th, td {
         font-size: 1rem;
