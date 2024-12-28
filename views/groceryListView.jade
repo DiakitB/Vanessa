@@ -1,46 +1,76 @@
 extends layout
 
 block content
-   h1= totalRecipes + ' Recipes for the week. Here is your grocery list.'
+   .message-box
+      h3= `You have ${totalRecipes} recipes planned for the week. Here is your grocery list:`
 
-   // loop through the groceryList array and create a beautiful grocery list
+ 
    ul
-      each item in groceryList
+      each item, index in groceryList
           li 
-             span.quantity #{item.quantity} #{item.unit}
-             span.ingredient #{item.ingredient}
+             span.index #{index + 1}.
+             span.details
+                span.quantity #{item.quantity} #{item.unit}
+                span.ingredient #{item.ingredient}
    
    style.
-      @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+      .message-box {
+         background-color: #f9f9f9; /* Light grey background */
+         border-radius: 8px;
+         padding: 1em;
+         margin-bottom: 1em;
+         text-align: center;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      h3 {
+         font-family: 'Roboto', sans-serif;
+         font-weight: 700;
+         color: #333; /* Dark grey text */
+      }
       ul {
          max-height: 20em; /* Adjust the height as needed */
          overflow-y: auto;
          list-style-type: none;
          padding: 0;
          margin: 0;
-         background-color: #ffe4e1; /* Light pink background */
+         background-color: #f9f9f9; /* Light grey background */
          border-radius: 8px;
          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-         font-family: 'Pacifico', cursive; /* Cute font */
+         font-family: 'Roboto', sans-serif; /* Modern font */
       }
       li {
          padding: 1em;
-         border-bottom: 1px solid #ffb6c1; /* Light pink border */
+         border-bottom: 1px solid #e0e0e0; /* Light grey border */
          display: flex;
-         justify-content: space-between;
          align-items: center;
-         text-transform: uppercase; /* Convert text to uppercase */
-         color: #ff69b4; /* Hot pink text */
+         background-color: white;
+         border-radius: 8px;
+         margin: 0.5em 0;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         transition: transform 0.2s;
+      }
+      li:hover {
+         transform: scale(1.02);
       }
       li:last-child {
          border-bottom: none;
       }
+      .index {
+         margin-right: 1em;
+         font-weight: bold;
+         color: #333; /* Dark grey text */
+      }
+      .details {
+         display: flex;
+         flex-direction: column;
+      }
       .quantity {
          font-weight: bold;
-         color: #ff69b4; /* Hot pink text */
+         color: #333; /* Dark grey text */
       }
       .ingredient {
-         font-weight: bold;
-         color: #ff1493; /* Deep pink text */
+         font-weight: 700;
+         color: #555; /* Medium grey text */
       }
