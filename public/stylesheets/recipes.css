@@ -85,7 +85,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  align-items: center;
+  align-items: stretch; /* Ensure all cards stretch to the same height */
   justify-content: center;
   margin-top: 3rem;
 }
@@ -95,6 +95,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure all cards have the same height */
 }
 .cardContainer__body:hover {
   transform: translateY(-10px);
@@ -118,6 +121,7 @@
 }
 .cardContent_box {
   padding: 1rem;
+  flex-grow: 1; /* Ensure content box takes up remaining space */
 }
 .cardBtn {
   display: flex;
