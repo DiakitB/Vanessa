@@ -35,6 +35,33 @@ body {
   display: block;
 }
 
+.card8-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  gap: 20px; /* Add gap between the two href elements */
+}
+
+.card8-actions a {
+  padding: 0.75rem 1.5rem;
+  background-color: pink; /* Hot pink color */
+  color: black;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Girly font */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.card8-actions a:hover {
+  background-color: var(--pink-dark); /* Deep pink color */
+  transform: translateY(-2px);
+}
+
 .card8-content {
   padding: 20px;
 }
@@ -62,41 +89,6 @@ body {
 
 .card8-content li {
   margin-bottom: 5px;
-}
-
-.card8-actions {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  border-top: 1px solid #eee;
-}
-
-.card8-actions a {
-  padding: 0.75rem 1.5rem;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.card8-actions a:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
-
-.card8-actions .interact {
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.card8-actions .interact:hover {
-  color: #c71585;
-  text-decoration: underline;
 }
 
 .message {

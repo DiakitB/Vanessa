@@ -1,0 +1,95 @@
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffe4e1; /* Light pink background */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun font */
+  }
+  .container-action {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+  }
+  .button-action {
+  width: 200;
+  margin: 0 auto;
+  background-color: black ;
+  }
+  .button-action a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff69b4; /* Hot pink button */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow */
+  }
+  .button-action a:hover {
+    background-color: #ff1493; /* Deep pink on hover */
+  }
+  .start-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #ff69b4; /* Hot pink button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow */
+  }
+  .start-button:hover {
+    background-color: #ff1493; /* Deep pink on hover */
+  }
+  .item-question {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .item-question p {
+    font-size: 18px;
+    color: #ff69b4; /* Hot pink text */
+  }
+  .item-question button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow */
+  }
+  .item-question .yes-button {
+    background-color: #ff69b4; /* Hot pink button */
+    color: white;
+  }
+  .item-question .yes-button:hover {
+    background-color: #ff1493; /* Deep pink on hover */
+  }
+  .item-question .no-button {
+    background-color: #ff69b4; /* Hot pink button */
+    color: white;
+  }
+  .item-question .no-button:hover {
+    background-color: #ff1493; /* Deep pink on hover */
+  }
+
+
+  .create-item-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .create-item-btn:hover {
+    background-color: #0056b3;
+  }

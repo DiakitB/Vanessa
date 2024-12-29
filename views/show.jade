@@ -6,6 +6,9 @@ block content
     div.card8
       div.card8-image
         img(src=recipe.image, alt=recipe.title)
+      div.card8-actions
+        a(href='/kitchen/all-recipes' class='interact') Back to Recipes
+        a(href=`/kitchen/cart/${recipe._id}` class='interact' id='bookmark-link') Bookmark Recipe
       div.card8-content
         h1= recipe.title
         p= recipe.description
@@ -17,9 +20,6 @@ block content
         ol
           each instruction, index in recipe.instructions
             li #{index + 1}. #{instruction}
-      div.card8-actions
-        a(href='/kitchen/all-recipes' class='interact') Back to Recipes
-        a(href=`/kitchen/cart/${recipe._id}` class='interact' id='bookmark-link') Bookmark Recipe
 
   div.message(id='bookmark-message') Recipe bookmarked successfully!
   div.message.error(id='already-bookmarked-message') Recipe is already bookmarked!

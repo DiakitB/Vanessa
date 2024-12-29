@@ -1,34 +1,35 @@
 block content
+  .container
+    h1 Sub Files
+    .btn-box
+      .goback-button
+        a.btn.btn-primary.girly-button(href='/') Go Back
+      .goback-button
+        a.btn.btn-primary.girly-button(href='/file/create') Create File
 
-  h1 Sub Files
-  .btn-box
-    .goback-button
-      a.btn.btn-primary(href='/') Go Back
-    .goback-button
-      a.btn.btn-primary(href='/file/create') Create File
-
-  table#financeTable.table.table-striped
-    thead
-      tr
-        th File Name
-        th Last Payment Date
-        th Last Payment Amount
-        th Next Payment Date
-        th Payment Frequency
-        th Actions
-
-    tbody
-      each file, i in files
+    table#financeTable.table.table-striped
+      thead
         tr
-          td= file.title
-          td= file.payments.length > 0 ? file.payments[0].date : 'N/A'
-          td= file.payments.length > 0 ? file.payments[0].payment : 'N/A'
-          td= file.nextDate ? file.nextDate : 'N/A'
-          td= file.paymentFrequency ? file.paymentFrequency : 'N/A'
-          td
-            a.btn.btn-primary(href=`/file/subfiles/${file._id}`) View
+          th File Name
+          th Last Payment Date
+          th Last Payment Amount
+          th Next Payment Date
+          th Payment Frequency
+          th Actions
+
+      tbody
+        each file, i in files
+          tr
+            td= file.title
+            td= file.payments.length > 0 ? file.payments[0].date : 'N/A'
+            td= file.payments.length > 0 ? file.payments[0].payment : 'N/A'
+            td= file.nextDate ? file.nextDate : 'N/A'
+            td= file.paymentFrequency ? file.paymentFrequency : 'N/A'
+            td
+              a.btn.btn-primary(href=`/file/subfiles/${file._id}`) View
 
   link(rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css")
+  link(rel="stylesheet", href="/stylesheets/tablet.css")
   script(src="https://code.jquery.com/jquery-3.6.0.min.js")
   script(src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js")
   script.
@@ -39,86 +40,5 @@ block content
         "ordering": true,
         "info": true
       });
-    });
-
-  style.
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #004658;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden; /* Prevent horizontal scrolling */
-    }
-    table {
-      width: 100%;
-      margin: 0 auto;
-      background-color: white;
-      border-collapse: collapse;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: center;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-    td:hover {
-      background-color: #d4edda; /* Light green background on hover */
-    }
-    a {
-      text-decoration: none;
-    }
-    a:hover {
-      color: black;
-    }
-    .goback-button {
-      margin-bottom: 20px;
-      border: 1px solid black;
-      padding: 10px;
-      text-align: center;
-      cursor: pointer;
-      background-color: #f2f2f2;
-    }
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      color: #ffffff;
-      background-color: #da6d97;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .btn-box {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 600px;
-      margin: 5rem auto;
-    }
-    @media (max-width: 768px) {
-      .btn-box {
-        flex-direction: column;
-        align-items: center;
-      }
-      .goback-button {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-      th, td {
-        font-size: 1.1rem;
-        padding: 8px;
-      }
-    }
-    @media (max-width: 576px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-      th, td {
-        font-size: 1rem;
-        padding: 6px;
-      }
-    }
+    })
+  

@@ -5,15 +5,14 @@ block content
     .navbar-container
       .logo
         img(src="/data/uploads/vanessa.jpg", alt="Vanessa")
-      .menu-icon
-        i.fas.fa-bars
+      
       .menu
         a(href="/") Home
         a(href="/kitchen/create") Add Recipe
         a(href="/recipes/bookmarks") Bookmarked
         a(href="/recipes/groceryList") Grocery List
   .main-section 
-    h1.h1 Welcome to Recipe Finder
+    p.h1 Welcome to Recipe Finder
   
     form.formGroup(action="/kitchen/search", method="GET")
       input(type="text", name="search", placeholder="Search for recipes")

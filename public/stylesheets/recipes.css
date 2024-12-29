@@ -1,12 +1,10 @@
-
-/* Reset CSS */
-
+/* Root Variables */
 :root {
   --dark-pink: #ba4270;
   --water-white: #fbfcfe;
   --blue-color: #36536b;
   --dark-Blue: #1b262f;
-  --light-Pink: #da6d97;
+  --light-Pink: #f8bbd0;
   --light-Gray: #6c8294;
   --light-Blue: #e1eff3;
   --light-Blue-2: #004658;
@@ -38,39 +36,165 @@
   --radius: 0.2rem;
 }
 
+/* Navigation Bar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--light-Pink);
+  color: var(--dark-Blue);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  border-radius: 50%;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap; /* Ensure items do not wrap to the next line */
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+
+.menu a {
+  color: black !important;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 20px;
+  background-color: var(--pink-light);
+  border: 2px solid var(--pink);
+  border-radius: 25px; /* Rounded corners for a button-like appearance */
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* Girly font */
+}
+
+.menu a:hover {
+  background-color: var(--pink);
+  border-color: var(--pink-dark);
+  transform: scale(1.05);
+}
+
+.menu a:active {
+  background-color: var(--pink-dark);
+  border-color: var(--pink-dark);
+}
+
+.menu a:visited {
+  color: white;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+/* Ensure navbar items are visible on smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .menu {
+    justify-content: center;
+    width: 100%;
+  }
+  .menu a {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+}
+
+/* Form Styling */
 .formGroup {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+  flex-direction: column;
+  align-items: center;
 }
+
 .formGroup input {
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ced4da;
-  border-radius: 5px 0 0 5px;
+  border: 2px solid var(--pink);
+  border-radius: 25px;
   outline: none;
+  margin-bottom: 1rem;
+  width: 80%;
+  max-width: 400px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: var(--pink-light);
+  color: var(--dark-Blue);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
+
+.formGroup input:focus {
+  border-color: var(--pink-dark);
+  box-shadow: 0 0 10px var(--pink-dark);
+}
+
 .formGroup button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
+  border: 2px solid var(--pink);
+  background-color: var(--pink);
+  color: white;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
+
 .formGroup button:hover {
-  background-color: #0056b3;
+  background-color: var(--pink-dark);
+  border-color: var(--pink-dark);
+  transform: scale(1.05);
 }
+
+.formGroup button:active {
+  background-color: var(--pink-dark);
+  border-color: var(--pink-dark);
+}
+
+.formGroup button:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--pink-dark);
+}
+
+/* Other Styles */
 .recipe-page {
   padding: 2rem;
 }
+
 .recipePage-btn {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
 }
+
 .recipePage-btn__link {
   padding: 0.5rem 1rem;
   background-color: #28a745;
@@ -79,9 +203,11 @@
   border-radius: 5px;
   transition: background-color 0.3s;
 }
+
 .recipePage-btn__link:hover {
   background-color: #218838;
 }
+
 .cardContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -90,6 +216,7 @@
   justify-content: center;
   margin-top: 3rem;
 }
+
 .cardContainer__body {
   background-color: var(--bgc-bullet);
   border-radius: 10px;
@@ -100,14 +227,17 @@
   flex-direction: column;
   height: 100%; /* Ensure all cards have the same height */
 }
+
 .cardContainer__body:hover {
   transform: translateY(-10px);
 }
+
 .cardImage_box {
   width: 100%;
   height: 250px;
   overflow: hidden;
 }
+
 .cardImage {
   width: 100%;
   height: 100%;
@@ -116,25 +246,31 @@
   transform: scale(0.8);
   transition: opacity 0.5s, transform 0.5s;
 }
+
 .cardImage.visible {
   opacity: 1;
   transform: scale(1);
 }
+
 .cardContent_box {
   padding: 1rem;
   flex-grow: 1; /* Ensure content box takes up remaining space */
 }
+
 .cardBtn {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
 }
+
 .cardBtn__link:first-child {
   background-color: #ff4f87;
 }
+
 .cardBtn__link:last-child {
   background-color: #28a745;
 }
+
 .cardBtn__link {
   padding: 0.5rem 1rem;
   background-color: #007bff;
@@ -143,15 +279,18 @@
   border-radius: 5px;
   transition: background-color 0.3s, transform 0.3s;
 }
+
 .cardBtn__link:hover {
   background-color: #0056b3;
   transform: scale(1.05);
 }
+
 .title-box {
   padding: 1rem;
   background-color: #f8f9fa;
   border-bottom: 1px solid #ced4da;
 }
+
 .title {
   font-size: 1.2rem;
   color: #343a40;
@@ -160,6 +299,7 @@
   font-weight: bold;
   font-family: 'playfair display', serif;
 }
+
 h1 {
   font-size: 2.5rem;
   color: white;
@@ -167,6 +307,7 @@ h1 {
   margin-bottom: 1rem;
   font-family: 'playfair display', serif;
 }
+
 .notification {
   display: none;
   position: fixed;
@@ -179,6 +320,7 @@ h1 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
+
 .cardImage {
   transition: transform 0.5s ease-in-out;
   transform: scale(0.9);
@@ -189,32 +331,26 @@ h1 {
   transform: scale(1);
   opacity: 1;
 }
+
 /* Media queries */
 @media (max-width: 1200px) {
   .cardContainer {
     justify-content: space-around;
   }
 }
+
 @media (max-width: 992px) {
   .cardContainer {
     justify-content: center;
   }
 }
+
 @media (max-width: 768px) {
   .cardContainer {
     grid-template-columns: 1fr;
   }
   .cardContainer__body {
     width: 100%;
-  }
-  .menu {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .menu-icon {
-    display: block;
-    margin-right: 20px;
   }
   .formGroup {
     flex-direction: column;
@@ -237,6 +373,7 @@ h1 {
     object-fit: cover;
   }
 }
+
 @media (max-width: 576px) {
   .main-section {
     padding: 1rem;
@@ -260,89 +397,34 @@ h1 {
   }
 }
 
-/* Navigation Bar Styling */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-}
-
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-.logo img {
-  height: 50px;
-  width: auto;
-  border-radius: 50%;
-}
-
-.menu-icon {
-  display: none;
-}
-
-.menu {
-  display: flex;
-  gap: 20px;
-}
-
-.menu a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: 2px solid #007bff;
-  border-radius: 5px;
-  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
-}
-
-.menu a:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-  transform: scale(1.05);
-}
-
-.menu a:active {
-  background-color: #004085;
-  border-color: #004085;
-}
-
-.menu a:visited {
-  color: #fff;
-}
-
-.menu a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
+/* Animated Welcome Message */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  .menu-icon i.fas.fa-bars {
-    font-size: 1.5rem; /* Adjust the size as needed */
-  }
-  .menu.open {
-    display: flex;
-  }
-
-  .menu-icon {
-    display: block;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
+p {
+  font-size: 2.5rem;
+  color: var(--wildWatermelon);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-family: var(--headlinesFont);
+  animation: fadeIn 2s ease-in-out;
+  background: linear-gradient(90deg, var(--light-Pink), var(--wildWatermelon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+
+
+
+
+
