@@ -9,7 +9,8 @@ block content
 
   .file-title 
     p.title-text #{file.title}: PAYMENTS
-    h1 Balance: $#{Number(file.totalAmount) - Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0)) <= 0 ? 'You are done with your payments' : Number(file.totalAmount) - Number(file.payments.reduce((acc, payment) => acc + Number(payment.payment), 0))}
+    h1 Balance: <!-- The balance will be updated by JavaScript -->
+
   table
     thead
       tr
@@ -20,88 +21,7 @@ block content
         tr
           td #{payment.date}
           td #{payment.payment}
-  style.
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: white;
-      margin: 0 auto;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-
-    th {
-      background-color: #f2f2f2;
-      text-align: left;
-    }
-
-    form {
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      max-width: 600px;
-    }
-
-    label {
-      display: inline-block;
-      width: 100px;
-    }
-
-    input[type="number"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button[type="submit"], .gobackfile {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background-color: #28a745;
-      color: white;
-      text-decoration: none;
-      text-align: center;
-    }
-
-    .file-title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 600px;
-      margin: 5rem auto;
-    }
-
-    .title-text {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: white;
-      text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .title-text {
-        font-size: 1.2rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-      th, td {
-        padding: 5px;
-      }
-
-      button[type="submit"], .gobackfile {
-        padding: 8px 10px;
-      }
-
-      .title-text {
-        font-size: 1rem;
-      }
-    }
+  link(rel="stylesheet", href="/stylesheets/file.css")
+  script.
+    window.file = !{JSON.stringify(file)};
+  script(src="/js/file.js")

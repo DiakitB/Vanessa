@@ -1,11 +1,8 @@
 const asyncHandler = require("express-async-handler");
-// const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
-// const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
-// const { Upload } = require("@aws-sdk/lib-storage");
+
 const Recipe = require("../models/recipeModel");
 const multerS3 = require('multer-s3');
-// const multer = require('multer');
-// const multerS3 = require('multer-s3');
+
 const { S3Client } = require('@aws-sdk/client-s3');
 const Bookmark = require("../models/bookmarkModel");
 const aws = require('aws-sdk');
@@ -14,7 +11,7 @@ const multer = require('multer');
 
 
 
-// create a storage object that store file in pyblic/data/uploads
+
  
 
 
@@ -76,13 +73,6 @@ exports.createRecipe_get = asyncHandler(async (req, res) => {
   res.render("recipeForm");
 });
 
-// //////////////
-// const { body, validationResult } = require('express-validator');
-// const asyncHandler = require('express-async-handler');
-// const multer = require('multer');
-// const multerS3 = require('multer-s3');
-// const { S3Client } = require('@aws-sdk/client-s3');
-// const Recipe = require('./models/Recipe'); // Adjust the path as needed
 
 const s3Client = new S3Client({
   region: process.env.AWS_REGION,
@@ -165,28 +155,31 @@ exports.createRecipe_post = [
       servings,
     });
 
-    await recipe.save();
+    // Prepend the new recipe to the beginning of the array
+    const recipes = await Recipe.find();
+    recipes.unshift(recipe);
+    await Recipe.deleteMany();
+    await Recipe.insertMany(recipes);
+
     res.redirect('/');
   }),
 ];
 
-exports.updateRecipe_get = asyncHandler(async (req, res) => {
+
+
+// Function to display the form with the recipe information
+exports.editRecipe_get = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById(req.params.id);
-  res.render("update", { recipe: recipe });
+  if (!recipe) {
+    return res.status(404).send('Recipe not found');
+  }
+  res.render('recipeForm', { recipe });
 });
 
+// Function to handle the form submission and update the recipe
 exports.updateRecipe_post = asyncHandler(async (req, res) => {
   await Recipe.findByIdAndUpdate(req.params.id, req.body);
-});
-
-exports.updateRecipe_get = asyncHandler(async (req, res) => {
-  const recipe = await Recipe.findById(req.params.id);
-  res.render("update", { recipe: recipe });
-});
-
-exports.updateRecipe_post = asyncHandler(async (req, res) => {
-  await Recipe.findByIdAndUpdate(req.params.id, req.body);
-  res.redirect("/");
+  res.redirect('/');
 });
 
 exports.deleteRecipe = asyncHandler(async (req, res) => {
@@ -208,10 +201,7 @@ exports.getAllRecipes = asyncHandler(async (req, res) => {
 
 });
 
-exports.vanessaRouter = asyncHandler(async (req, res) => {
 
-  res.render("vanessa");
-});
 
 exports.addRecipeToBookmarks = asyncHandler(async (req, res) => {
 

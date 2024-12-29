@@ -1,0 +1,116 @@
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  margin: 0 auto;
+  font-family: 'Cursive', sans-serif;
+  animation: fadeIn 1s ease-in-out;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+  font-size: 1rem;
+  color: #ff69b4;
+}
+
+th {
+  background-color: #ffe4e1;
+  text-align: center;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #fff0f5;
+}
+
+tr:hover {
+  background-color: #ffb6c1;
+  transition: background-color 0.3s ease;
+}
+
+form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"], .gobackfile {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff69b4;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.file-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 5rem auto;
+}
+
+.title-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff69b4;
+  text-align: center;
+}
+
+.girly-elegant {
+    font-family: 'Cursive', 'Brush Script MT', sans-serif;
+    color: #ff69b4; /* Hot pink color */
+    font-size: 1.5em;
+    font-style: italic;
+  }
+
+@media (max-width: 768px) {
+  .title-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  th, td {
+    padding: 8px;
+  }
+
+  button[type="submit"], .gobackfile {
+    padding: 8px 10px;
+  }
+
+  .title-text {
+    font-size: 1rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -9,8 +9,8 @@ router.get("/recipes", recipeController.recipes);
 router.get("/recipe/:id", recipeController.getRecipe);
 router.get("/create", recipeController.createRecipe_get);
 router.post("/create", recipeController.createRecipe_post);
-router.get("/update/:id", recipeController.updateRecipe_get);
-router.post("/update/:id", recipeController.updateRecipe_post);
+router.get('/recipes/:id/edit', recipeController.editRecipe_get);
+router.post('/recipes/:id', recipeController.updateRecipe_post);
 router.get("/cart/:id", recipeController.addRecipeToBookmarks);
 // create a route for bookmarking a recipeecipe);
 
@@ -21,3 +21,4 @@ router.get("/search", recipeController.searchRecipe);
 
 
 module.exports = router;
+
