@@ -1,6 +1,8 @@
 extends layout
 
 block content
+   a.button(href='/recipes/bookmarks') Go to Bookmarks
+
    .message-box
       h3= `You have ${totalRecipes} recipes planned for the week. Here is your grocery list:`
 
@@ -14,6 +16,29 @@ block content
 
    style.
       @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+      .button {
+         display: inline-block;
+         padding: 10px 20px;
+         margin-bottom: 1em;
+         background-color: #ee5867;
+         color: white;
+         text-decoration: none;
+         border-radius: 25px;
+         font-family: 'Pacifico', cursive;
+         font-size: 16px;
+         text-align: center;
+         transition: background-color 0.3s, transform 0.3s;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .button:hover {
+         background-color: #d94a5b;
+         transform: scale(1.05);
+      }
+      .button:active {
+         background-color: #c43d4e;
+      }
 
       .message-box {
          background-color: #f9f9f9;
