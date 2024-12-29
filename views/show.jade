@@ -7,8 +7,15 @@ block content
       div.card8-image
         img(src=recipe.image, alt=recipe.title)
       div.card8-actions
-        a(href='/kitchen/all-recipes' class='interact') Back to Recipes
-        a(href=`/kitchen/cart/${recipe._id}` class='interact' id='bookmark-link') Bookmark Recipe
+        a(href='/kitchen/all-recipes' class='interact')
+          i.fas.fa-arrow-left
+          |  Back to Recipes
+        a(href='/kitchen/cart/#{recipe._id}' class='interact' id='bookmark-link')
+          i.fas.fa-bookmark
+          |  Bookmark Recipe
+        a(href='/kitchen/recipes/#{recipe._id}/edit' class='interact' id='edit-link')
+          i.fas.fa-edit
+          |  Edit Recipe
       div.card8-content
         h1= recipe.title
         p= recipe.description

@@ -109,6 +109,20 @@
 }
 
 /* Ensure navbar items are visible on smaller screens */
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.cardContent_box__title {
+  font-family: 'Great Vibes', cursive, 'Poppins', sans-serif; /* Girly and elegant font */
+  font-size: 24px; /* Adjust the font size */
+  color: #d35400; /* Darker shade of orange for better contrast */
+  text-align: center; /* Center align the text */
+  margin: 10px 0; /* Add some margin */
+  font-weight: 600; /* Make the text bold */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+/* Ensure navbar items are visible on smaller screens */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -126,10 +140,20 @@
   }
   .menu a {
     font-size: 12px; /* Make the nav items smaller */
-    padding: 5px 10px;
+    padding: 5px; /* Reduce padding */
     background-color: #ee5867; /* Change background color */
     border: none; /* Remove border */
+    width: auto; /* Set width to auto */
+    text-align: center; /* Center align text */
+    display: inline-block; /* Ensure they are inline-block */
   }
+}
+
+/* Form Styling */
+.formGroup {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 /* Form Styling */
@@ -416,14 +440,3 @@ h1 {
   }
 }
 
-h5 {
-  font-size: 2.5rem;
-  color: var(--wildWatermelon);
-  text-align: center;
-  margin-bottom: 1rem;
-  font-family: var(--headlinesFont);
-  animation: fadeIn 2s ease-in-out;
-  background: linear-gradient(90deg, var(--light-Pink), var(--wildWatermelon));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}

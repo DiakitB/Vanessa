@@ -5,11 +5,15 @@ block content
   nav.navbar
     .navbar-container
       .logo
-        img(src="/data/uploads/vanessa.jpg", alt="Vanessa")
-     
+        a(href="/")
+          img(src="/data/uploads/vanessa.jpg", alt="Vanessa")
+      
       .menu
+        //- a(href="/") Home
+        a(href="/kitchen/create") Add Recipe
         a(href="/kitchen/all-recipes") Recipes
         a(href="/recipes/groceryList") Grocery List
+  .main-section 
   
   
   .notification

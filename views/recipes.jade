@@ -4,16 +4,16 @@ block content
   nav.navbar
     .navbar-container
       .logo
-        img(src="/data/uploads/vanessa.jpg", alt="Vanessa")
+        a(href="/")
+          img(src="/data/uploads/vanessa.jpg", alt="Vanessa")
       
       .menu
-        a(href="/") Home
+        //- a(href="/") Home
         a(href="/kitchen/create") Add Recipe
         a(href="/recipes/bookmarks") Bookmarked
         a(href="/recipes/groceryList") Grocery List
   .main-section 
    
-  
     form.formGroup(action="/kitchen/search", method="GET")
       input(type="text", name="search", placeholder="Search for recipes")
       button(type="submit") Search
@@ -30,8 +30,8 @@ block content
           .cardContent_box
             p.cardContent_box__title= recipe.title
           .cardBtn 
-            a.cardBtn__link(href=recipe.url) View Recipe
+            a.cardBtn__link(href=recipe.url)
+              i.fas.fa-eye
+              |  Recipe
             a.cardBtn__link(href="#", data-id=recipe._id)
               i.fas.fa-bookmark
-            a.cardBtn__link(href="/kitchen/recipes/" + recipe._id + "/edit")
-              i.fas.fa-edit
