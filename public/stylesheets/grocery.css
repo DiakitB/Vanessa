@@ -111,108 +111,106 @@ li:last-child {
 }
 
 /* Navbar Styles */
+/* Navigation Bar Styling */
 .navbar {
-    width: 100%;
-    position: fixed; /* Fix navbar at the top */
-    top: 0;
-    left: 0;
-    z-index: 1000; /* Ensure it stays above other content */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #f8bbd0; /* Light pink background */
-    color: #333; /* Dark text color */
+    background-color: var(--light-Pink);
+    color: var(--dark-Blue);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-container {
+  }
+  
+  .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.logo {
+  }
+  
+  .logo {
     display: flex;
     align-items: center;
     margin-right: 1rem;
-}
-
-.logo img {
+  
+  }
+  
+  .logo img {
     height: 50px;
     width: auto;
     border-radius: 50%;
-}
-
-.menu {
+  }
+  
+  .menu {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     flex-wrap: nowrap; /* Ensure items do not wrap to the next line */
     overflow-x: auto; /* Allow horizontal scrolling if needed */
-}
-
-.menu a {
-    color: white !important;
+  }
+  
+  .menu a {
+    color: black !important;
     text-decoration: none;
-    font-size: 12px; /* Adjust font size to be smaller */
-    padding: 6px 12px; /* Adjust padding to be smaller */
-    background-color: #ee5867; /* Pink background */
-    border: 2px solid #d94a5b; /* Darker pink border */
+    font-size: 14px;
+    padding: 10px 20px;
+    background-color: var(--pink-light);
+    border: 2px solid var(--pink);
     border-radius: 25px; /* Rounded corners for a button-like appearance */
     transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
     font-family: 'Comic Sans MS', cursive, sans-serif; /* Girly font */
-    font-weight: bold; /* Make font bolder */
-    text-transform: uppercase; /* Make text uppercase */
-}
-
-.menu a:hover {
-    background-color: #d94a5b; /* Darker pink on hover */
-    border-color: #c43d4e; /* Even darker pink border on hover */
+  }
+  
+  .menu a:hover {
+    background-color: var(--pink);
+    border-color: var(--pink-dark);
     transform: scale(1.05);
-}
-
-.menu a:active {
-    background-color: #c43d4e; /* Darkest pink on active */
-    border-color: #c43d4e;
-}
-
-.menu a:visited {
+  }
+  
+  .menu a:active {
+    background-color: var(--pink-dark);
+    border-color: var(--pink-dark);
+  }
+  
+  .menu a:visited {
     color: white;
-}
-
-.menu a:hover {
+  }
+  
+  .menu a:hover {
     text-decoration: underline;
-}
+  }
+  
+  /* Ensure navbar items are visible on smaller screens */
+  .menu a:hover {
+    text-decoration: underline;
+  }
 
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
-        align-items: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
     }
     .navbar-container {
-        flex-direction: row; /* Change to row to display items horizontally */
-        align-items: center; /* Center align items vertically */
-        justify-content: space-around; /* Space items evenly */
-        width: 100%;
+      flex-direction: row; /* Change to row to display items horizontally */
+      align-items: center; /* Center align items vertically */
+      justify-content: space-between; /* Space items evenly */
+      width: 100%;
     }
     .menu {
-        justify-content: center;
-        width: 100%;
+      justify-content: center;
+      width: 100%;
     }
     .menu a {
-        font-size: 12px; /* Keep the nav items the same size */
-        padding: 6px 12px; /* Keep padding the same */
-        background-color: #ee5867; /* Change background color */
-        border: 2px solid #d94a5b; /* Keep border */
-        width: auto; /* Set width to auto */
-        text-align: center; /* Center align text */
-        display: inline-block; /* Ensure they are inline-block */
-        color: white !important; /* Change text color to white */
-        font-weight: bold; /* Make font bolder */
-        text-transform: uppercase; /* Make text uppercase */
+      font-size: 12px; /* Make the nav items smaller */
+      padding: 5px; /* Reduce padding */
+      background-color: #ee5867; /* Change background color */
+      border: none; /* Remove border */
+      width: auto; /* Set width to auto */
+      text-align: center; /* Center align text */
+      display: inline-block; /* Ensure they are inline-block */
+      color: var(--white) !important;
     }
-}
+  }
