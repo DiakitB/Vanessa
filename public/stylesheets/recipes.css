@@ -146,6 +146,7 @@
     width: auto; /* Set width to auto */
     text-align: center; /* Center align text */
     display: inline-block; /* Ensure they are inline-block */
+    color: var(--white) !important;
   }
 }
 
