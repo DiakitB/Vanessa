@@ -13,14 +13,17 @@ block content
             a(href="/kitchen/all-recipes") Recipes
    
    link(rel="stylesheet", href="/stylesheets/grocery.css")
-   .message-box
-      h3= `You have ${totalRecipes} recipes planned for the week. Here is your grocery list:`
-   ul#grocery-list
-      each item, index in groceryList
-         li 
-            input(type="checkbox", class="grocery-checkbox")
-            span.index #{index + 1}.
-            span.details
-               span.ingredient #{item.ingredient}
-               span.quantity #{item.quantity} #{item.unit}
+   
+   .container
+      .message-box
+         h3= `You have ${totalRecipes} recipes planned for the week. Here is your grocery list:`
+      ul#grocery-list
+         each item, index in groceryList
+            li 
+               input(type="checkbox", class="grocery-checkbox")
+               span.index #{index + 1}.
+               span.details
+                  span.ingredient #{item.ingredient}
+                  span.quantity #{item.quantity} #{item.unit}
+   
    script(src="/js/grocery.js")

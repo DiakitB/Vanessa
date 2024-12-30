@@ -1,89 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh; /* Ensure body takes full height */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+}
+
+/* Container Styles */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center horizontally */
+    padding-top: 60px; /* Add some padding at the top to avoid overlap with navbar */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
 .button {
-   display: inline-block;
-   padding: 10px 20px;
-   margin-bottom: 1em;
-   background-color: #ee5867;
-   color: white;
-   text-decoration: none;
-   border-radius: 25px;
-   font-family: 'Pacifico', cursive;
-   font-size: 16px;
-   text-align: center;
-   transition: background-color 0.3s, transform 0.3s;
-   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 1em;
+    background-color: #ee5867;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .button:hover {
-   background-color: #d94a5b;
-   transform: scale(1.05);
+    background-color: #d94a5b;
+    transform: scale(1.05);
 }
 .button:active {
-   background-color: #c43d4e;
+    background-color: #c43d4e;
 }
 
 .message-box {
-   background-color: #f9f9f9;
-   border-radius: 8px;
-   padding: 1em;
-   margin-bottom: 1em;
-   text-align: center;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 h3 {
-   font-family: 'Roboto', sans-serif;
-   font-weight: 700;
-   color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #333;
 }
 ul {
-   max-height: 20em;
-   overflow-y: auto;
-   list-style-type: none;
-   padding: 0;
-   margin: 0;
-   background-color: #f9f9f9;
-   border-radius: 8px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   font-family: 'Roboto', sans-serif;
-   width: 100%;
-   overflow-x: hidden; /* Prevent horizontal scrolling */
+    max-height: 20em;
+    overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 li {
-   padding: 1em;
-   border-bottom: 1px solid #e0e0e0;
-   display: flex;
-   align-items: center;
-   background-color: white;
-   border-radius: 8px;
-   margin: 0.5em 0;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   transition: transform 0.2s;
-   width: 100%;
-   box-sizing: border-box; /* Ensure padding and border are included in the width */
+    padding: 1em;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    margin: 0.5em 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
 }
 li:hover {
-   transform: scale(1.02);
+    transform: scale(1.02);
 }
 li:last-child {
-   border-bottom: none;
+    border-bottom: none;
 }
 .index {
-   margin-right: 1em;
-   font-weight: bold;
-   color: #333;
+    margin-right: 1em;
+    font-weight: bold;
+    color: #333;
 }
 .details {
-   display: flex;
-   flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .quantity {
-   font-weight: bold;
-   color: #333;
+    font-weight: bold;
+    color: #333;
 }
 .ingredient {
-   font-weight: 700;
-   color: #555;
+    font-weight: 700;
+    color: #555;
 }
 
 .grocery-checkbox {
@@ -93,6 +112,11 @@ li:last-child {
 
 /* Navbar Styles */
 .navbar {
+    width: 100%;
+    position: fixed; /* Fix navbar at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it stays above other content */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -100,7 +124,6 @@ li:last-child {
     background-color: #f8bbd0; /* Light pink background */
     color: #333; /* Dark text color */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
 }
 
 .navbar-container {
@@ -126,7 +149,7 @@ li:last-child {
 
 .menu {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: nowrap; /* Ensure items do not wrap to the next line */
     overflow-x: auto; /* Allow horizontal scrolling if needed */
 }
@@ -134,14 +157,16 @@ li:last-child {
 .menu a {
     color: white !important;
     text-decoration: none;
-    font-size: 14px;
-    padding: 10px 20px;
+    font-size: 12px; /* Adjust font size to be smaller */
+    padding: 6px 12px; /* Adjust padding to be smaller */
     background-color: #ee5867; /* Pink background */
     border: 2px solid #d94a5b; /* Darker pink border */
     border-radius: 25px; /* Rounded corners for a button-like appearance */
     transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
     font-family: 'Comic Sans MS', cursive, sans-serif; /* Girly font */
+    font-weight: bold; /* Make font bolder */
+    text-transform: uppercase; /* Make text uppercase */
 }
 
 .menu a:hover {
@@ -171,7 +196,7 @@ li:last-child {
     .navbar-container {
         flex-direction: row; /* Change to row to display items horizontally */
         align-items: center; /* Center align items vertically */
-        justify-content: space-between; /* Space items evenly */
+        justify-content: space-around; /* Space items evenly */
         width: 100%;
     }
     .menu {
@@ -179,13 +204,15 @@ li:last-child {
         width: 100%;
     }
     .menu a {
-        font-size: 12px; /* Make the nav items smaller */
-        padding: 5px; /* Reduce padding */
+        font-size: 12px; /* Keep the nav items the same size */
+        padding: 6px 12px; /* Keep padding the same */
         background-color: #ee5867; /* Change background color */
-        border: none; /* Remove border */
+        border: 2px solid #d94a5b; /* Keep border */
         width: auto; /* Set width to auto */
         text-align: center; /* Center align text */
         display: inline-block; /* Ensure they are inline-block */
         color: white !important; /* Change text color to white */
+        font-weight: bold; /* Make font bolder */
+        text-transform: uppercase; /* Make text uppercase */
     }
 }
