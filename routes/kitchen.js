@@ -1,4 +1,6 @@
 const express = require("express");
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 const recipeController = require("../controllers/recipeController");
 
 const router = express.Router();
@@ -22,7 +24,7 @@ router.post("/create", recipeController.createRecipe_post);
 router.get('/recipes/:id/edit', recipeController.editRecipe_get);
 
 // Route to handle the form submission and update the recipe
-router.put('/recipes/:id', recipeController.editRecipe_post);
+router.put('/recipes/:id', upload.single('image'), recipeController.editRecipe_post);
 
 // Route to add a recipe to bookmarks
 router.get("/cart/:id", recipeController.addRecipeToBookmarks);

@@ -9,7 +9,8 @@ const flash = require("express-flash");
 const compression = require("compression");
 const helmet = require("helmet");
 const methodOverride = require('method-override');
-
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 const indexRouter = require("./routes/index");
 const fileRouter = require("./routes/family");
 const travelRouter = require("./routes/travel");

@@ -119,8 +119,8 @@ exports.createRecipe_post = [
 
   // Middleware to log request body and file
   (req, res, next) => {
-    console.log('Request Body:', req.body);
-    console.log('Uploaded File:', req.file);
+    // console.log('Request Body:', req.body);
+    // console.log('Uploaded File:', req.file);
     next();
   },
 
@@ -187,6 +187,8 @@ exports.editRecipe_get = asyncHandler(async (req, res) => {
 
 
 exports.editRecipe_post = async (req, res) => {
+  console.log('Request Method:', req.method);
+  console.log('Request Headers:', req.headers);
   console.log('THIS IS REQUEST BODY', req.body);
 
   const updatedRecipe = {
@@ -206,7 +208,7 @@ exports.editRecipe_post = async (req, res) => {
     res.redirect('/kitchen/all-recipes');
   } catch (err) {
     req.flash('error', 'Error updating recipe');
-    res.redirect(`/recipes/${req.params.id}?_method=PUT`);
+    res.redirect(`/recipes/${req.params.id}/edit`);
   }
 };
 
@@ -228,9 +230,9 @@ exports.getAllRecipes = asyncHandler(async (req, res) => {
    const recipes = await Recipe.find();
   //  console.log(recipes);
    // loop over the recipes and console.log image
-    recipes.forEach((recipe) => {
-      console.log(recipe.image);
-    });
+    // recipes.forEach((recipe) => {
+    //   console.log(recipe.image);
+    // });
    res.render("recipes", { recipes: recipes });
 
 
