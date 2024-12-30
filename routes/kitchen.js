@@ -3,22 +3,34 @@ const recipeController = require("../controllers/recipeController");
 
 const router = express.Router();
 
+// Route to display the home page
 router.get("/", recipeController.index);
-//create routes for the following: getRecipe, createRecipe_get, createRecipe_post, updateRecipe_get, updateRecipe_post, deleteRecipe
+
+// Route to display all recipes
 router.get("/recipes", recipeController.recipes);
+
+// Route to display a single recipe
 router.get("/recipe/:id", recipeController.getRecipe);
+
+// Route to display the form to create a new recipe
 router.get("/create", recipeController.createRecipe_get);
+
+// Route to handle the form submission and create a new recipe
 router.post("/create", recipeController.createRecipe_post);
+
+// Route to display the form with the recipe information for editing
 router.get('/recipes/:id/edit', recipeController.editRecipe_get);
-router.post('/recipes/:id', recipeController.updateRecipe_post);
+
+// Route to handle the form submission and update the recipe
+router.put('/recipes/:id', recipeController.editRecipe_post);
+
+// Route to add a recipe to bookmarks
 router.get("/cart/:id", recipeController.addRecipeToBookmarks);
-// create a route for bookmarking a recipeecipe);
 
-
+// Route to display all recipes in the kitchen
 router.get("/all-recipes", recipeController.getAllRecipes);
+
+// Route to search for a recipe
 router.get("/search", recipeController.searchRecipe);
 
-
-
 module.exports = router;
-

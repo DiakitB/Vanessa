@@ -161,13 +161,17 @@ exports.createRecipe_post = [
     await Recipe.deleteMany();
     await Recipe.insertMany(recipes);
 
-    res.redirect('/');
+    res.redirect('/kitchen/all-recipes');
   }),
 ];
 
 
 
 // Function to display the form with the recipe information
+;
+
+// Function to display the form with the recipe information
+// Function to display the form with the recipe information for editing
 exports.editRecipe_get = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById(req.params.id);
   if (!recipe) {
@@ -177,10 +181,41 @@ exports.editRecipe_get = asyncHandler(async (req, res) => {
 });
 
 // Function to handle the form submission and update the recipe
-exports.updateRecipe_post = asyncHandler(async (req, res) => {
-  await Recipe.findByIdAndUpdate(req.params.id, req.body);
-  res.redirect('/');
+
+
+
+
+
+exports.editRecipe_post = async (req, res) => {
+  console.log('THIS IS REQUEST BODY', req.body);
+
+  const updatedRecipe = {
+    title: req.body.title,
+    image: req.file ? req.file.path : req.body.existingImage,
+    instructions: req.body.instructions,
+    servings: req.body.servings,
+    ingredients: Array.isArray(req.body.ingredients) ? req.body.ingredients.map((ingredient, index) => ({
+      ingredient,
+      unit: req.body.units[index]
+    })) : []
+  };
+
+  try {
+    await Recipe.findByIdAndUpdate(req.params.id, updatedRecipe);
+    req.flash('success', 'Recipe updated successfully');
+    res.redirect('/kitchen/all-recipes');
+  } catch (err) {
+    req.flash('error', 'Error updating recipe');
+    res.redirect(`/recipes/${req.params.id}?_method=PUT`);
+  }
+};
+
+// Function to delete a recipe
+exports.deleteRecipe = asyncHandler(async (req, res) => {
+  await Recipe.findByIdAndDelete(req.params.id);
+  res.redirect("/kitchen/all-recipes");
 });
+
 
 exports.deleteRecipe = asyncHandler(async (req, res) => {
   await Recipe.findByIdAndDelete(req.params.id);

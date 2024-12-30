@@ -1,31 +1,36 @@
 extends layout
 
 block content 
-  h1 Add a New Recipe
-  form(method='post' enctype='multipart/form-data')
+  h1 #{recipe ? 'Edit Recipe' : 'Add a New Recipe'}
+  form(method='post' enctype='multipart/form-data' action=recipe ? `/kitchen/recipes/${recipe._id}?_method=PUT` : '/kitchen/create')
     div.form-group
       label(for='title') Recipe Title:
-      input(type='text' name='title' id='title' required)
+      input(type='text' name='title' id='title' required value=recipe ? recipe.title : '')
     div.form-group
       label(for='image') Recipe Image:
-      input(type='file' name='image' id='image' required)
+      input(type='file' name='image' id='image')
+      if recipe && recipe.image
+        img(src=recipe.image alt='Recipe Image' style='max-width: 100px;')
+        input(type='hidden' name='existingImage' value=recipe.image)
     div.form-group
       label Instructions:
       div#instruction
-        div.instruction
-          input(type='text' name='instructions[]' placeholder='Instruction' required)
+        each instruction, index in recipe ? recipe.instructions : ['']
+          div.instruction
+            input(type='text' name='instructions[]' placeholder='Instruction' required value=instruction)
     div.form-group
       button(type='button' id='add-instruction') Add Instruction
 
     div.form-group
       label(for='servings') Recipe Serving:
-      input(type='number' name='servings' id='servings' required)
+      input(type='number' name='servings' id='servings' required value=recipe ? recipe.servings : '')
     div.form-group
       label Ingredients:
       div#ingredients
-        div.ingredient
-          input(type='text' name='ingredients[]' placeholder='Ingredient' required)
-          input(type='text' name='units[]' placeholder='Unit' required)
+        each ingredient, index in recipe ? recipe.ingredients : [{ingredient: '', unit: ''}]
+          div.ingredient
+            input(type='text' name='ingredients[]' placeholder='Ingredient' required value=ingredient.ingredient)
+            input(type='text' name='units[]' placeholder='Unit' required value=ingredient.unit)
     div.form-group
       button(type='button' id='add-ingredient') Add Ingredient
 

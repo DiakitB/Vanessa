@@ -8,6 +8,7 @@ const session = require("express-session");
 const flash = require("express-flash");
 const compression = require("compression");
 const helmet = require("helmet");
+const methodOverride = require('method-override');
 
 const indexRouter = require("./routes/index");
 const fileRouter = require("./routes/family");
@@ -23,7 +24,7 @@ app.set("view engine", "jade");
 
 // Setup session middleware
 app.use(session({
-  secret: 'your_secret_key',
+ secret: 'your_secret_key',
   resave: false,
   saveUninitialized: true
 }));
@@ -53,10 +54,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Use method-override middleware
+app.use(methodOverride('_method'));
+
 // Define routes
 app.use("/", indexRouter);
 app.use("/file", fileRouter);
-app.use("/kitchen", kitchenRouter);
+app.use("/kitchen", kitchenRouter); // Kitchen routes
 app.use("/travel", travelRouter);
 app.use("/recipes", bookmarksRouter);
 
