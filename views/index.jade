@@ -6,6 +6,13 @@ block content
     p.animated(data-aos="fade-up") Welcome Vanessa  to your app!
     p.animated(data-aos="fade-up" data-aos-delay="500") Organize your files, plan your trips, and discover new recipes.
   .landing-page
+    .container.recipes(data-aos="fade-up" data-aos-delay="2000")
+      a.card(href="/kitchen/all-recipes")
+        .card-content
+          .card-icon
+            i.fas.fa-utensils
+          .card-title RECIPES
+          .card-description Discover new recipes
     .container.files(data-aos="fade-up" data-aos-delay="1000")
       a.card(href="/file/subfiles")
         .card-content
@@ -20,10 +27,3 @@ block content
             i.fas.fa-plane
           .card-title TRAVEL
           .card-description Plan your trips
-    .container.recipes(data-aos="fade-up" data-aos-delay="2000")
-      a.card(href="/kitchen/all-recipes")
-        .card-content
-          .card-icon
-            i.fas.fa-utensils
-          .card-title RECIPES
-          .card-description Discover new recipes
