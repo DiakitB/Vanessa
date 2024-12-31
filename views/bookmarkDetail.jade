@@ -17,7 +17,8 @@ block content
           each instruction, index in recipe.instructions
             li #{index + 1}. #{instruction}
       div.card8-actions
-        a(href='/recipes/bookmarks' class='interact') Back to Recipes
+        a(href='/recipes/bookmarks' class='interact')
+          i(class='fas fa-arrow-left') Back to Recipes
 
       style.
         .card8-container {
@@ -77,7 +78,8 @@ block content
           justify-content: space-between;
           padding: 20px;
           border-top: 1px solid #eee;
-          gap: 20px; /* Add gap between the two href elements */
+          gap: 10px; /* Add gap between the href elements */
+          flex-wrap: nowrap; /* Prevent wrapping on smaller screens */
         }
 
         .card8-actions a {
@@ -92,6 +94,9 @@ block content
           font-weight: 600;
           font-family: 'Comic Sans MS', cursive, sans-serif; /* Girly font */
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+          flex: 1; /* Ensure equal width for all buttons */
+          text-align: center; /* Center align text */
+          margin: 0; /* Remove margin between buttons */
         }
 
         .card8-actions a:hover {

@@ -29,8 +29,11 @@ block content
           .cardContent_box
             p.cardContent_box__title= recipe.title
           .cardBtn 
-            a.cardBtn__link(href=`/recipes/bookmarks/${recipe._id}`) View Recipe
-            a.cardBtn__link(href=`/recipes/deleted/${recipe._id}`) Delete Recipe
+            a.cardBtn__link(href=`/recipes/bookmarks/${recipe._id}`)
+              i.fa.fa-eye 
+              |  Recipe
+            a.cardBtn__link(href=`/recipes/deleted/${recipe._id}`)
+              i.fa.fa-trash(style="color: red;") 
         
 
           
