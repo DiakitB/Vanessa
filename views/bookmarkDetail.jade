@@ -1,6 +1,7 @@
 extends layout 
 
 block content
+  link(rel="stylesheet", href="/stylesheets/bookmark.css")
   div.card8-container
     div.card8
       div.card8-image
@@ -18,100 +19,6 @@ block content
             li #{index + 1}. #{instruction}
       div.card8-actions
         a(href='/recipes/bookmarks' class='interact')
-          i(class='fas fa-arrow-left') Back to Recipes
-
-      style.
-        .card8-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-          overflow-x: hidden; /* Prevent horizontal scrolling */
-        }
-
-        .card8 {
-          background: #fff;
-          border-radius: 10px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          overflow: hidden;
-          max-width: 600px;
-          width: 100%;
-          margin: 20px;
-        }
-
-        .card8-image img {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
-
-        .card8-content {
-          padding: 20px;
-        }
-
-        .card8-content h1 {
-          font-size: 24px;
-          margin-bottom: 10px;
-        }
-
-        .card8-content p {
-          font-size: 16px;
-          color: #666;
-          margin-bottom: 20px;
-        }
-
-        .card8-content h3 {
-          font-size: 20px;
-          margin-bottom: 10px;
-        }
-
-        .card8-content ul, .card8-content ol {
-          padding-left: 20px;
-          margin-bottom: 20px;
-        }
-
-        .card8-content li {
-          margin-bottom: 5px;
-        }
-        .card8-actions {
-          display: flex;
-          justify-content: space-between;
-          padding: 20px;
-          border-top: 1px solid #eee;
-          gap: 10px; /* Add gap between the href elements */
-          flex-wrap: nowrap; /* Prevent wrapping on smaller screens */
-        }
-
-        .card8-actions a {
-          padding: 0.75rem 1.5rem;
-          background-color: pink; /* Hot pink color */
-          color: black;
-          text-decoration: none;
-          border-radius: 25px;
-          transition: background-color 0.3s ease, transform 0.3s ease;
-          display: inline-block;
-          font-size: 16px;
-          font-weight: 600;
-          font-family: 'Comic Sans MS', cursive, sans-serif; /* Girly font */
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-          flex: 1; /* Ensure equal width for all buttons */
-          text-align: center; /* Center align text */
-          margin: 0; /* Remove margin between buttons */
-        }
-
-        .card8-actions a:hover {
-          background-color: var(--pink-dark); /* Deep pink color */
-          transform: translateY(-2px);
-        }
-                
-
-        @media (max-width: 600px) {
-          .card8 {
-            max-width: 100%;
-            margin: 0;
-            border-radius: 0;
-          }
-          .card8-container {
-            padding: 0;
-          }
-        }
+          i.fas.fa-arrow-left
+          |  Back to Recipes
+     
