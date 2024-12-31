@@ -363,7 +363,60 @@ h1 {
   transform: scale(1);
   opacity: 1;
 }
+/* pop up modal */
+/* Modal container */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
+/* Modal content */
+.modal-content {
+  background-color: #f8c8dc; /* Pastel pink */
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow */
+}
+
+/* Modal header */
+.modal-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(22, 21, 21)
+}
+
+/* Button styles */
+.btn {
+  background-color: #ffb6c1; /* Light pink */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.btn:hover {
+  background-color: #ff69b4; /* Hot pink */
+}
+
+.moda-text{
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
 /* Media queries */
 @media (max-width: 1200px) {
   .cardContainer {

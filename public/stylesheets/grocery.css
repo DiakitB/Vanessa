@@ -111,8 +111,23 @@ li:last-child {
 }
 
 /* Navbar Styles */
-/* Navigation Bar Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh; /* Ensure body takes full height */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+}
+
+/* Navbar Styles */
 .navbar {
+    width: 100%;
+    position: fixed; /* Fix the navbar at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure the navbar is above other content */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -120,38 +135,37 @@ li:last-child {
     background-color: var(--light-Pink);
     color: var(--dark-Blue);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .navbar-container {
+}
+
+.navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-  }
-  
-  .logo {
+}
+
+.logo {
     display: flex;
     align-items: center;
     margin-right: 1rem;
-  
-  }
-  
-  .logo img {
+}
+
+.logo img {
     height: 50px;
     width: auto;
     border-radius: 50%;
-  }
-  
-  .menu {
+}
+
+.menu {
     display: flex;
     gap: 20px;
     flex-wrap: nowrap; /* Ensure items do not wrap to the next line */
     overflow-x: auto; /* Allow horizontal scrolling if needed */
-  }
-  
-  .menu a {
+}
+
+.menu a {
     color: black !important;
     text-decoration: none;
     font-size: 14px;
@@ -162,55 +176,62 @@ li:last-child {
     transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
     font-family: 'Comic Sans MS', cursive, sans-serif; /* Girly font */
-  }
-  
-  .menu a:hover {
+}
+
+.menu a:hover {
     background-color: var(--pink);
     border-color: var(--pink-dark);
     transform: scale(1.05);
-  }
-  
-  .menu a:active {
+}
+
+.menu a:active {
     background-color: var(--pink-dark);
     border-color: var(--pink-dark);
-  }
-  
-  .menu a:visited {
+}
+
+.menu a:visited {
     color: white;
-  }
-  
-  .menu a:hover {
+}
+
+.menu a:hover {
     text-decoration: underline;
-  }
-  
-  /* Ensure navbar items are visible on smaller screens */
-  .menu a:hover {
+}
+
+/* Ensure navbar items are visible on smaller screens */
+.menu a:hover {
     text-decoration: underline;
-  }
+}
+
+/* Ensure navbar items are visible on smaller screens */
+.menu a:hover {
+    text-decoration: underline;
+}
 
 @media (max-width: 768px) {
     .navbar {
-      flex-direction: column;
-      align-items: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
     }
     .navbar-container {
-      flex-direction: row; /* Change to row to display items horizontally */
-      align-items: center; /* Center align items vertically */
-      justify-content: space-between; /* Space items evenly */
-      width: 100%;
+        flex-direction: row; /* Change to row to display items horizontally */
+        align-items: center; /* Center align items vertically */
+        justify-content: space-between; /* Space items evenly */
+        width: 100%;
     }
     .menu {
-      justify-content: center;
-      width: 100%;
+        justify-content: center;
+        width: 100%;
+        padding-left: 10px; /* Add padding to the left */
     }
     .menu a {
-      font-size: 12px; /* Make the nav items smaller */
-      padding: 5px; /* Reduce padding */
-      background-color: #ee5867; /* Change background color */
-      border: none; /* Remove border */
-      width: auto; /* Set width to auto */
-      text-align: center; /* Center align text */
-      display: inline-block; /* Ensure they are inline-block */
-      color: var(--white) !important;
+        font-size: 12px; /* Make the nav items smaller */
+        padding: 5px; /* Reduce padding */
+        background-color: #ee5867; /* Change background color */
+        border: none; /* Remove border */
+        width: 100px; /* Set a fixed width */
+        text-align: center; /* Center align text */
+        display: inline-block; /* Ensure they are inline-block */
+        color: white !important; /* Set text color to white */
     }
-  }
+    
+}

@@ -13,7 +13,7 @@ router.get("/recipes", recipeController.recipes);
 
 // Route to display a single recipe
 router.get("/recipe/:id", recipeController.getRecipe);
-
+router.delete("/recipe/:id", recipeController.deleteRecipe);
 // Route to display the form to create a new recipe
 router.get("/create", recipeController.createRecipe_get);
 

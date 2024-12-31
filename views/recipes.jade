@@ -31,7 +31,18 @@ block content
             p.cardContent_box__title= recipe.title
           .cardBtn 
             a.cardBtn__link(href=recipe.url)
-              i.fas.fa-eye
+              i.fas.fa-eye.icon-view
               |  Recipe
-            a.cardBtn__link(href="#", data-id=recipe._id)
-              i.fas.fa-bookmark
+            a.cardBtn__link.bookmark(href="#", data-id=recipe._id)
+              i.fas.fa-bookmark.icon-bookmark
+            a.cardBtn__link.delete(href="#", data-id=recipe._id)
+              i.fas.fa-trash(style="color: red;")
+
+  // Delete Confirmation Modal
+  .modal#deleteModal
+    .modal-content
+      span.modal-header Confirm Deletion
+      p.moda-text Are you sure you want to delete this recipe?
+      button.btn.btn-danger#confirmDelete Yes, Delete
+      button.btn.btn-secondary#cancelDelete Cancel
+

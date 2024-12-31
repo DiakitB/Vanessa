@@ -213,17 +213,25 @@ exports.editRecipe_post = async (req, res) => {
 };
 
 // Function to delete a recipe
+
+
+// In recipeController.js
 exports.deleteRecipe = asyncHandler(async (req, res) => {
-  await Recipe.findByIdAndDelete(req.params.id);
-  res.redirect("/kitchen/all-recipes");
+  
+
+  try {
+    const recipeId = req.params.id;
+    console.log('Deleting recipe with ID:', recipeId);
+    const recipe = await Recipe.findByIdAndDelete(recipeId);
+    if (!recipe) {
+      return res.status(404).json({ success: false, message: 'Recipe not found.' });
+    }
+    res.status(200).json({ success: true, message: 'Recipe deleted successfully!' });
+  } catch (err) {
+    console.error('Error deleting recipe:', err);
+    res.status(500).json({ success: false, message: 'An error occurred while deleting the recipe.' });
+  }
 });
-
-
-exports.deleteRecipe = asyncHandler(async (req, res) => {
-  await Recipe.findByIdAndDelete(req.params.id);
-  res.redirect("/");
-});
-
 
 exports.getAllRecipes = asyncHandler(async (req, res) => {
   
