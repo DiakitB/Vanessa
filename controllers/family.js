@@ -124,3 +124,28 @@ exports.testFolderPost = asyncHandler(async (req, res) => {
     res.render('test2', { title: 'TEST FOLDER' });
 });
 
+exports.deleteFile = asyncHandler(async (req, res) => {
+    await File.findByIdAndDelete(req.params.id);
+    res.redirect('/file/subfiles');
+});
+
+exports.getUpdateFile = asyncHandler(async (req, res) => {
+    const file = await File.findById(req.params.id);
+    res.render('fileForm', { title: 'UPDATE FILE', file });
+});
+
+
+exports.putUpdateFile = asyncHandler(async (req, res) => {
+    const file = await File.findById(req.params.id);
+    file.set(req.body);
+    await file.save();
+    res.redirect('/file/subfiles');
+});
+
+exports.deleteFile = asyncHandler(async (req, res) => {
+    // await File.findByIdAndDelete(req.params.id);
+    const file = await File.findById(req.params.id);
+    console.log(file);
+    console.log('delete');
+    res.redirect('/file/subfiles');
+});

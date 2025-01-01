@@ -5,7 +5,7 @@ block content
   link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap")
   script(src="https://code.jquery.com/jquery-3.6.0.min.js")
   script(src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js")
-  script(src="/js/table.js") // Update the path as needed
+  script(src="/js/subFile.js")
   
   .container
     h1 Sub Files
@@ -14,7 +14,7 @@ block content
         a.btn.btn-primary.girly-button(href='/') Go Back
       .goback-button
         a.btn.btn-primary.girly-button(href='/file/create') Create File
-
+    
     table#financeTable.table.table-striped
       thead
         tr
@@ -27,7 +27,7 @@ block content
 
       tbody
         each file, i in files
-          tr
+          tr(data-file-id=`${file._id}`)
             td= file.title
             td= file.payments.length > 0 ? file.payments[0].date : 'N/A'
             td= file.payments.length > 0 ? file.payments[0].payment : 'N/A'
@@ -40,6 +40,18 @@ block content
               a.btn.btn-primary(href=`/file/subfiles/${file._id}`)
                 i.fas.fa-edit.icon.edit
                 |  Edit
-              a.btn.btn-primary(href=`/file/subfiles/${file._id}`)
+              a.btn.btn-primary(data-file-id=`${file._id}` class="delete-button")
                 i.fas.fa-trash.icon.delete
                 |  Delete
+
+div#deleteModal.modal
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        h5.modal-title Delete Confirmation
+        button.close(type="button" id="closeDeleteModalButton") &times;
+      div.modal-body
+        p Are you sure you want to delete this file?
+      div.modal-footer
+        button.btn.btn-secondary(type="button" id="cancelDeleteButton") Cancel
+        button.btn.btn-danger(type="button" id="confirmDeleteButton") Delete
