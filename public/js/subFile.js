@@ -20,7 +20,7 @@ function showDeleteModal(fileId) {
     
     // Perform the delete action (e.g., send a request to the server)
     // Example using fetch API:
-    fetch(`/file/delet/${fileId}`, {
+    fetch(`/file/deleted/${fileId}`, {
       method: 'DELETE'
     })
     .then(response => {

@@ -124,9 +124,23 @@ exports.testFolderPost = asyncHandler(async (req, res) => {
     res.render('test2', { title: 'TEST FOLDER' });
 });
 
+
+
+// Other controller methods...
+
+// const File = require('../models/file');
+// const asyncHandler = require('express-async-handler');
+
+// Other controller methods...
+
 exports.deleteFile = asyncHandler(async (req, res) => {
-    await File.findByIdAndDelete(req.params.id);
-    res.redirect('/file/subfiles');
+    try {
+        const fileId = req.params.id;
+        await File.findByIdAndDelete(fileId);
+        res.status(200).send({ message: 'File deleted successfully' });
+      } catch (err) {
+        res.status(500).send({ message: 'Error deleting file' });
+      }
 });
 
 exports.getUpdateFile = asyncHandler(async (req, res) => {

@@ -1,43 +1,23 @@
 const asyncHandler = require("express-async-handler");
-
 const Recipe = require("../models/recipeModel");
 const multerS3 = require('multer-s3');
-
 const { S3Client } = require('@aws-sdk/client-s3');
 const Bookmark = require("../models/bookmarkModel");
 const aws = require('aws-sdk');
 const { body, validationResult } = require("express-validator");
 const multer = require('multer');
+const dotenv = require('dotenv');
 
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
+// Load environment variables from .env file
+dotenv.config({ path: './config.env' });
 
 exports.index = asyncHandler(async (req, res) => {
-
- 
-
   res.render("index");
 });
 
-// exports.index = asyncHandler(async (req, res) => {
-//   res.render("index");
-// });
 // create a search function that takes a search query and return a list of recipes that title contains the search query
 exports.searchRecipe = asyncHandler(async (req, res) => {
   const search = req.query.search;
- 
   const recipes = await Recipe.find({ title: { $regex: search, $options: "i" } });
   if (!recipes) {
     res.send("no recipes found");
@@ -45,34 +25,18 @@ exports.searchRecipe = asyncHandler(async (req, res) => {
   res.render("recipes", { recipes: recipes });
 });
 
-
-
-
-
-
 exports.recipes = asyncHandler(async (req, res) => {
-
-  
-  
   res.render("recipesView");
 });
 
-///create a function that takes a recipe and bookmaks it
-
-
-
 exports.getRecipe = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById(req.params.id);
- 
   res.render("show", { recipe: recipe });
 });
 
 exports.createRecipe_get = asyncHandler(async (req, res) => {
-
-
   res.render("recipeForm");
 });
-
 
 const s3Client = new S3Client({
   region: process.env.AWS_REGION,
@@ -86,7 +50,11 @@ const s3Client = new S3Client({
 const upload = multer({
   storage: multerS3({
     s3: s3Client,
-    bucket: process.env.AWS_BUCKET_NAME,
+    bucket: process.env.AWS_BUCKET_NAME, // Ensure this is set correctly
+    acl: 'public-read',
+    metadata: function (req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
+    },
     key: function (req, file, cb) {
       cb(null, Date.now().toString() + '-' + file.originalname);
     },
@@ -165,13 +133,6 @@ exports.createRecipe_post = [
   }),
 ];
 
-
-
-// Function to display the form with the recipe information
-;
-
-// Function to display the form with the recipe information
-// Function to display the form with the recipe information for editing
 exports.editRecipe_get = asyncHandler(async (req, res) => {
   const recipe = await Recipe.findById(req.params.id);
   if (!recipe) {
@@ -179,12 +140,6 @@ exports.editRecipe_get = asyncHandler(async (req, res) => {
   }
   res.render('recipeForm', { recipe });
 });
-
-// Function to handle the form submission and update the recipe
-
-
-
-
 
 exports.editRecipe_post = async (req, res) => {
   console.log('Request Method:', req.method);
@@ -212,13 +167,7 @@ exports.editRecipe_post = async (req, res) => {
   }
 };
 
-// Function to delete a recipe
-
-
-// In recipeController.js
 exports.deleteRecipe = asyncHandler(async (req, res) => {
-  
-
   try {
     const recipeId = req.params.id;
     console.log('Deleting recipe with ID:', recipeId);
@@ -234,27 +183,16 @@ exports.deleteRecipe = asyncHandler(async (req, res) => {
 });
 
 exports.getAllRecipes = asyncHandler(async (req, res) => {
-  
-   const recipes = await Recipe.find();
-  //  console.log(recipes);
-   // loop over the recipes and console.log image
-    // recipes.forEach((recipe) => {
-    //   console.log(recipe.image);
-    // });
-   res.render("recipes", { recipes: recipes });
-
-
+  const recipes = await Recipe.find();
+  res.render("recipes", { recipes: recipes });
 });
 
-
-
 exports.addRecipeToBookmarks = asyncHandler(async (req, res) => {
-
   const recipe = await Recipe.findById(req.params.id);
   const bookmarks = await Bookmark.find();
   const [bookmark] = bookmarks;
 
-   // check if the recipe is already bookmarked
+  // check if the recipe is already bookmarked
   const isBookmarked = bookmark.bookmarked.find((bookmarked) => bookmarked._id == req.params.id);
   if (isBookmarked) {
     return res.json({ success: false, message: 'Recipe already bookmarked' });
@@ -266,15 +204,3 @@ exports.addRecipeToBookmarks = asyncHandler(async (req, res) => {
   
   res.json({ success: true, message: 'Recipe has been bookmarked successfully' });
 });
-// create a function that will take all the bookmarked recipes, group the ingredients by name and sum the quantity
-
-
-
-// Configure AWS S3
-
-
-
-
-
-
-

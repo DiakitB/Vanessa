@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const  express = require('express');
+const  router = express.Router();
 const family = require('../controllers/family');
 // careate routes for family
 
@@ -10,7 +10,7 @@ router.get('/create', family.create_getFile);
 router.post('/create', family.create_postFile);
 router.get('/edit/:id', family.getUpdateFile);
 router.put('/edit/:id', family.putUpdateFile);
-router.delete('/delet/:id', family.deleteFile);
+router.delete('/deleted/:id', family.deleteFile);
 
 
 module.exports = router;
