@@ -1,0 +1,67 @@
+{
+  "name": "myFILES",
+  "short_name": "FILES",
+  "description": "Organize your files, plan your trips, and discover new recipes.",
+  "id": "isaiah",
+  "start_url": "/.",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "categories": [
+    "food"
+  ],
+  "icons": [
+    {
+      "src": "/data/uploads/logo.webp",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/data/uploads/logo.webp",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/data/uploads/scr-2.png",
+      "sizes": "640x480",
+      "type": "image/png"
+    },
+    {
+      "src": "/data/uploads/scr-2.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Recipes",
+      "short_name": "Recipes",
+      "description": "Discover new recipes",
+      "url": "/kitchen/all-recipes",
+      "icons": [{ "src": "/public/icons/recipes-icon.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Files",
+      "short_name": "Files",
+      "description": "Organize your files",
+      "url": "/file/subfiles",
+      "icons": [{ "src": "/public/icons/files-icon.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Travel",
+      "short_name": "Travel",
+      "description": "Plan your trips",
+      "url": "/travel/items",
+      "icons": [{ "src": "/public/icons/travel-icon.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+vanessa",
+      "url": "/?vanessa=%s"
+    }
+  ]
+}

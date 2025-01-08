@@ -8,6 +8,7 @@ html(lang="en")
     link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css")
     link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap")
     link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    link(rel="manifest", href="/js/manifest.json")
   
     style.
       body {
@@ -31,6 +32,18 @@ html(lang="en")
     script(src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
     script(src="/js/scripts.js")
+    script.
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/js/service-worker.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(error => {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+      }
     header
     
         block content
