@@ -123,4 +123,3 @@ exports.createGroceryList = asyncHandler(async (req, res) => {
   res.render("groceryListView", { totalRecipes: recipes.length, groceryList: groceryList });
 });
 
-console.log(convertToGrams(1, 'cup')); // 236.588
