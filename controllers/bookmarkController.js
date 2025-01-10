@@ -122,4 +122,5 @@ exports.createGroceryList = asyncHandler(async (req, res) => {
 
   res.render("groceryListView", { totalRecipes: recipes.length, groceryList: groceryList });
 });
+
 console.log('hello world')
