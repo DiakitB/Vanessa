@@ -74,7 +74,7 @@ const convertToGrams = (quantity, unit) => {
     boite: 1,      // Assuming 1 boite = 1 gram (approx)
     tranche: 1     // Assuming 1 tranche = 1 gram (approx)
   };
-  console.log(unit);
+ 
   const conversionFactor = conversionTable[unit];
   if (conversionFactor === undefined) {
     console.warn(`Unknown unit: ${unit}`);
