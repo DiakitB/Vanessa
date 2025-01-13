@@ -60,7 +60,6 @@ const upload = multer({
     },
   }),
 });
-
 exports.createRecipe_post = [
   // File upload middleware
   upload.single('image'),
