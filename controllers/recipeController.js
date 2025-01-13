@@ -37,7 +37,7 @@ exports.getRecipe = asyncHandler(async (req, res) => {
 exports.createRecipe_get = asyncHandler(async (req, res) => {
   res.render("recipeForm");
 });
-
+console.log('AWS_REGION:', process.env.MYDICK_SIZE);
 const s3Client = new S3Client({
   region: process.env.AWS_REGION,
   credentials: {
