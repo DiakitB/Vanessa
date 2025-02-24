@@ -207,6 +207,37 @@ body {
     text-decoration: underline;
 }
 
+#add-ingredient-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px; /* Add padding to the form */
+    box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+#add-ingredient-form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ff69b4;
+    border-radius: 5px;
+    background-color: #fff0f5;
+}
+
+#add-ingredient-form button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff69b4;
+    color: white;
+    cursor: pointer;
+}
+
+#add-ingredient-form button[type="submit"]:hover {
+    background-color: #ff1493;
+}
+
+
+
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -233,5 +264,18 @@ body {
         display: inline-block; /* Ensure they are inline-block */
         color: white !important; /* Set text color to white */
     }
+
+    #add-ingredient-form {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    #add-ingredient-form input[type="text"],
+    #add-ingredient-form button[type="submit"] {
+        width: 100%;
+        padding: 15px;
+    }
     
 }
+
+
