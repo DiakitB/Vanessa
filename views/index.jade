@@ -6,28 +6,52 @@ block content
   link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
   script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
   script(src="/js/index.js")
-  .intro
-    p.animated(data-aos="fade-up") Welcome Vanessa  to your app!
+  style.
+    .spinner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+    }
+  .spinner#loadingSpinner
+    .spinner-border(role="status")
+      span.sr-only Loading...
+    p Loading, please wait...
+  .intro(style="display: none;")
+    p.animated(data-aos="fade-up") Welcome Vanessa to your app!
     p.animated(data-aos="fade-up" data-aos-delay="500") Organize your files, plan your trips, and discover new recipes.
-  .landing-page
-    .container.recipes(data-aos="fade-up" data-aos-delay="2000")
+  .landing-page(style="display: none;")
+    .container.recipes(data-aos="fade-up" data-aos-delay="1000")
       a.card(href="/kitchen/all-recipes")
         .card-content
           .card-icon
             i.fas.fa-utensils
           .card-title RECIPES
           .card-description Discover new recipes
-    .container.files(data-aos="fade-up" data-aos-delay="1000")
+    .container.files(data-aos="fade-up" data-aos-delay="2000")
       a.card(href="/file/subfiles")
         .card-content
           .card-icon
             i.fas.fa-folder
           .card-title FILES
           .card-description Organize your files
-    .container.travel(data-aos="fade-up" data-aos-delay="1500")
+    .container.travel(data-aos="fade-up" data-aos-delay="3000")
       a.card(href="/travel/items")
         .card-content
           .card-icon
             i.fas.fa-plane
           .card-title TRAVEL
           .card-description Plan your trips
+  script.
+    window.addEventListener('load', function() {
+      document.getElementById('loadingSpinner').style.display = 'none';
+      document.querySelector('.intro').style.display = 'block';
+      document.querySelector('.landing-page').style.display = 'block';
+    });
