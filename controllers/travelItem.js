@@ -7,13 +7,20 @@ const Travelitems = require('../models/travelitemModel');
 
 exports.getAllItems = asyncHandler(async (req, res) => {
     const questions = await Travelitems.find();
-   
-    const [items] = questions;
- 
+    console.log(questions); // Debugging: Log the structure of questions
 
-   const item = items.items;
-  
-   
+    if (!questions || questions.length === 0) {
+        return res.status(404).send('No items found');
+    }
+
+    const [items] = questions;
+
+    if (!items || !items.items) {
+        return res.status(404).send('Items property not found');
+    }
+
+    const item = items.items;
+
     res.render('travelitems', { item });
 });
 // create a function will show one item out of time when clicked
